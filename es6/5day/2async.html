@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>async</title>
+	<script>
+		//基于promise的异步操作封装
+		let $ =	{ 
+			get(url){
+				//将异步操作封装到承诺对象中
+				return new Promise((resolve,reject)=>{
+					let xhr = new XMLHttpRequest();
+					xhr.open("GET",url);
+					xhr.responseType = "json";
+					xhr.setRequestHeader( "Content-Type","application/x-www-form-urlencoded");
+					xhr.send();
+					xhr.onreadystatechange = function(){
+						if(this.readyState === 4){
+							// 请求整体状态ok
+							if(this.status === 200){
+								// 承诺成功
+								resolve(this.response);
+							}else{
+								//承诺失败
+								reject(this)
+							}
+						}
+					}
+				});
+			}
+		}
+		//vue中使用
+		async function foo(){
+			let customers = await $.get("http://39.105.108.131:6677/customer/findAll");
+			console.log("顾客信息",customers);
+			let id = customers.data[0].id;
+			let address = await $.get("http://39.105.108.131:6677/address/findByCustomerId?id="+id);
+			console.log("地址",address);
+			return {
+				customers,
+				address
+			}
+		}
+		let f = foo();
+		console.log(f);
+		f.then((a)=>{
+			console.log("end",a);
+		})
+		var ob=new Object();
+		ob.age = 12;
+		console.log(Object,ob);
+		console.log(Array,Array(1,2));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

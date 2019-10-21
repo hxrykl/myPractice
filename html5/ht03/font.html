@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字体</title>
+	<link rel="stylesheet" href="css/iconfont.css">
+	<style>
+		*{
+			/*list-style: none;*/
+			margin: 0;
+			padding: 0;
+		}
+		div>ul:nth-child(1)>li:first-child{
+           font-family: '微软雅黑','黑体';
+           text-shadow:2px 6px 3px #ccc;
+           /*color:#cdcdcd;*/
+		}
+		div>ul:nth-child(1)>li:last-child{
+           font-family: '黑体','微软雅黑';
+           /*color:#cdcdcd;*/
+		}
+		.pxone{
+			font-size: 12px;
+			/*color: #cdcdcd;*/
+		}
+		li.pxone+li{
+			font-size: 14px;
+		}
+		#bold{
+			font-weight: bold;
+			text-decoration-style: dashed;
+			text-decoration-line: line-through;
+			text-decoration-color: #000;
+		}
+		#italic{
+			font-style: italic;
+			text-decoration-style: wavy;
+			text-decoration-color: #000;
+			text-decoration-line: line-through;
+		}
+		#onez{
+			line-height: 1em;
+			text-decoration-style: 
+		}
+		#trrz{
+			line-height: 3em;
+			text-decoration:underline solid pink;
+		}
+		#itabold{
+			font: italic bold 12px/2em '微软雅黑';
+		}
+		#normal{
+			font: normal normal 12px/1em '黑体';
+		}
+		.iconfont{
+			color: red;
+		}
+	</style>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1328631_bja6ghhcldk.css">
+</head>
+<body>
+	<div>
+		<!-- 字体风格选择 -->
+		<ul>
+			<li>微软雅黑</li>
+			<i class="iconfont  icon-qq"></i>
+			<li><a href="">下划线多大</a></li>
+			<li>黑体</li>
+		</ul>
+		<!-- 字体风格选择结束 -->
+		<!-- 字体大小 -->
+		<ul class="px">
+			<li class="pxone">12像素</li>
+			<li>14像素</li>
+		</ul>
+		<!-- 字体大小结束 -->
+		<!-- 字体粗细 -->
+		<ul>
+			<li >字体正常</li>
+			<li id="bold">字体粗体</li>
+		</ul>
+		<!-- 字体粗细结束 -->
+		<!-- 字体斜体 -->
+		<ul>
+			<li>字体正常</li>
+			<li id="italic">字体斜体</li>
+		</ul>
+		<!-- 字体斜体结束 -->
+		<!-- 字体垂直居中 -->
+		<ul>
+			<li id="onez">1个字符行高</li>
+			<li id="trrz">文本装饰</li>
+		</ul>
+		<!-- 字体垂直居中结束 -->
+		<!-- 字体整体速写 -->
+		<ul>
+			<li id="itabold">斜体变粗12像素2个字符垂直居中微软雅黑</li>
+			<li id="normal">正常不粗12像素1个字体垂直居中黑体</li>
+		</ul>
+		<!-- 字体整体速写结束 -->
+	</div>
+	<!-- 网络字体-图标库 -->
+	<div>
+		<i class="iconfont iconbomb-grenade"></i>
+	</div>
+	<div></div>
+	<div></div>
+</body>
+</html>

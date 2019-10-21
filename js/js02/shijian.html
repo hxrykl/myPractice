@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件流</title>
+</head>
+<body>
+	<div>
+		<form action="">
+			<input type="text">
+			<input type="text">
+		</form>
+	</div>
+	<script>
+		document.form[0].onsubmit = function(event){
+			//获取用户名和密码的DOM对象
+			var input_user = document.querySelector("input[name = user]");
+			var input_password = document.querySelector("input[]");
+		}
+	</script>
+</body>
+</html>

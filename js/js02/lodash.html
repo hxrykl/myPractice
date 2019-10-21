@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lodash.js</title>
+	<script src="./lodash.js"></script>
+	<script>
+		var students = [{
+			name:"terry",
+			gender:"female"
+		},{
+			name:"larry",
+			gender:"female"
+		},{
+			name:"tom",
+			gender:"male"
+		},{
+			name:"jacky",
+			gender:"male"
+		}]
+
+		var re = _.remove(students,function(item){
+			return item.gender == "female";
+		});
+		console.log("原值：",students);
+		console.log("返回值：",re);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

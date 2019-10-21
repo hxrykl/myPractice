@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡</title>
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		@media screen(min-width: 768px) {
+			.fang{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -250px;
+			margin-left: -500px;
+			background-color: #ADD8E6;
+			height: 500px;
+			width: 1000px;
+			overflow: hidden;
+
+			transition-property: all;
+			transition-duration: 10s;
+			transition-timing-function: ease-in-out;
+
+
+		}
+		.fang:hover{
+			background-color: #DC143C;
+			transform: scale(1.5);
+			transform: rotate(45deg);
+
+		}
+		.yuan {
+			background-color: #fff;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			border-radius: 50%;
+			transition-property: all;
+			transition-duration: 10s;
+			transition-timing-function: ease-in-out;
+		}
+		.fang:hover > div {
+			height: 150px;
+			width: 150px;
+			top: 500px;
+			left: 800px;
+			background-color: #800000;
+		}
+		.fang .yuan:hover {
+			height: 100px;
+			width: 100px;
+			top: 10px;
+			left: 600px;
+			background-color: #000;
+		}
+		.ling{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			background-color: pink;
+			/*transform: scaleX(45deg);*/
+			transform: skewX(45deg);
+		}
+			
+		}
+		@media screen(max-width: 790px) {
+			.fang{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -250px;
+			margin-left: -500px;
+			background-color: #000;
+			height: 500px;
+			width: 1000px;
+			overflow: hidden;
+
+			transition-property: all;
+			transition-duration: 10s;
+			transition-timing-function: ease-in-out;
+
+
+		}
+		.fang:hover{
+			background-color: #DC143C;
+			transform: scale(1.5);
+			transform: rotate(45deg);
+
+		}
+		.yuan {
+			background-color: #fff;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			border-radius: 50%;
+			transition-property: all;
+			transition-duration: 10s;
+			transition-timing-function: ease-in-out;
+		}
+		.fang:hover > div {
+			height: 150px;
+			width: 150px;
+			top: 500px;
+			left: 800px;
+			background-color: #800000;
+		}
+		.fang .yuan:hover {
+			height: 100px;
+			width: 100px;
+			top: 10px;
+			left: 600px;
+			background-color: #000;
+		}
+		.ling{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			background-color: pink;
+			/*transform: scaleX(45deg);*/
+			transform: skewX(45deg);
+		}
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="fang">
+		<div class="yuan"></div>
+		<!-- <div class="ling"></div> -->
+	</div>
+
+</body>
+</html>

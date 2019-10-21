@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BreathingLight</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1197442_nz9q4osq2ah.css">
+    <style>
+        .container {
+            width: 600px;
+            height: 600px;
+            margin: auto auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #000000;
+            box-sizing: border-box;
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .container .outer {
+            width: 300px;
+            height: 300px;
+            margin: auto auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            border: 10px solid #e8eaec;
+            animation-name: outerAnimate;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: 3000ms;
+            transition: background-color 500ms;
+            color: #e8eaec;
+            text-align: center;
+        }
+
+        /*  文本内部添加内容  */
+        .container .outer::after {
+            content: "其实你应该好好的休息";
+            line-height: 120px;
+            text-align: center;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-duration: 8000ms;
+            animation-name: changeContent;
+            color: #e8eaec;
+            font-size: 18px;
+            word-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .container > .outer > span {
+            color: #dcdee2;
+            font-size: 90px;
+            display: block;
+            margin-top: 80px;
+            animation-name: changeHeartColor;
+            animation-timing-function: ease-out;
+            animation-iteration-count: infinite;
+            animation-duration: 1000ms;
+            line-height: 100px;
+        }
+
+        /* 呼吸灯内部小桃心变色动画,这里把握一下心跳的节奏,“突变”差不多就可以 */
+        @keyframes changeHeartColor {
+            10% {
+                color: #F4A3B5;
+                font-size: 50px;
+            }
+
+            20% {
+                color: #F56692;
+                font-size: 60px;
+            }
+            30% {
+                color: #F65777;
+                font-size: 70px;
+            }
+            40% {
+                color: #ED474D;
+                font-size: 80px;
+            }
+            50% {
+                color: #CC3035;
+                font-size: 90px;
+            }
+            60% {
+                color: #CC3035;
+                font-size: 90px;
+            }
+            70% {
+                color: #ED474D;
+                font-size: 80px;
+            }
+            80% {
+                color: #F65777;
+                font-size: 70px;
+            }
+            90% {
+                color: #F56692;
+                font-size: 60px;
+            }
+            100% {
+                color: #F4A3B5;
+                font-size: 50px;
+            }
+        }
+
+        /* 呼吸灯内部变字动画 */
+
+        @keyframes changeContent {
+            25% {
+                content: "照顾好自己";
+            }
+
+            50% {
+                content: "身体才是最重要的";
+            }
+
+            75% {
+                content: "老大不小的人了都";
+            }
+
+            100% {
+                content: "我叫EricWang，很高兴认识你";
+            }
+        }
+
+        /* 呼吸灯外廓变色变形动画 */
+        @keyframes outerAnimate {
+            10% {
+                border: 15px solid #FBA98A;
+                width: 320px;
+                height: 320px;
+                content: "4545";
+            }
+
+            20% {
+                border: 20px solid #FAA285;
+                width: 340px;
+                height: 340px;
+            }
+            30% {
+                border: 25px solid #F2796C;
+                width: 360px;
+                height: 360px;
+            }
+            40% {
+                border: 30px solid #F17268;
+                width: 380px;
+                height: 380px;
+            }
+            50% {
+                border: 35px solid #EF6C64;
+                width: 400px;
+                height: 400px;
+            }
+            60% {
+                border: 35px solid #F17268;
+                width: 380px;
+                height: 380px;
+            }
+            70% {
+                border: 30px solid #F2796C;
+                width: 360px;
+                height: 360px;
+            }
+            80% {
+                border: 25px solid #FAA285;
+                width: 340px;
+                height: 340px;
+            }
+            90% {
+                border: 20px solid #FBA98A;
+                width: 320px;
+                height: 320px;
+            }
+            100% {
+                border: 15px solid #FBA98C;
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--   心跳呼吸灯，有点半吊子   -->
+
+<!-- 呼吸灯总容器 -->
+<div class="container">
+    <div class="outer">
+        <span class="iconfont icon-xin"> </span>
+    </div>
+</div>
+</body>
+</html>

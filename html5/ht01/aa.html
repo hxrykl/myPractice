@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字体</title>
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		div>ul:nth-child(1)>li:first-child{
+           font-family: '微软雅黑','黑体';
+           /*color:#cdcdcd;*/
+		}
+		div>ul:nth-child(1)>li:last-child{
+           font-family: '黑体','微软雅黑';
+           /*color:#cdcdcd;*/
+		}
+		.pxone{
+			font-size: 12px;
+			/*color: #cdcdcd;*/
+		}
+		li.pxone+li{
+			font-size: 14px;
+		}
+		#bold{
+			font-weight: bold;
+		}
+		#italic{
+			font-style: italic;
+		}
+		#onez{
+			line-height: 1em;
+		}
+		#trrz{s
+			line-height: 3em;
+		}
+		#itabold{
+			font: italic bold 12px/2em '微软雅黑';
+		}
+		#normal{
+			font: normal normal 12px/1em '黑体';
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<!-- 字体风格选择 -->
+		<ul>
+			<li>微软雅黑</li>
+			<li>黑体</li>
+		</ul>
+		<!-- 字体风格选择结束 -->
+		<!-- 字体大小 -->
+		<ul class="px">
+			<li class="pxone">12像素</li>
+			<li>14像素</li>
+		</ul>
+		<!-- 字体大小结束 -->
+		<!-- 字体粗细 -->
+		<ul>
+			<li >字体正常</li>
+			<li id="bold">字体粗体</li>
+		</ul>
+		<!-- 字体粗细结束 -->
+		<!-- 字体斜体 -->
+		<ul>
+			<li>字体正常</li>
+			<li id="italic">字体斜体</li>
+		</ul>
+		<!-- 字体斜体结束 -->
+		<!-- 字体垂直居中 -->
+		<ul>
+			<li id="onez">1个字符行高</li>
+			<li id="trrz">3个字符行高</li>
+		</ul>
+		<!-- 字体垂直居中结束 -->
+		<!-- 字体整体速写 -->
+		<ul>
+			<li id="itabold">斜体变粗12像素2个字符垂直居中微软雅黑</li>
+			<li id="normal">正常不粗12像素1个字体垂直居中黑体</li>
+		</ul>
+		<!-- 字体整体速写结束 -->
+	</div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

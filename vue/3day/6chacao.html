@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插槽</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-test title="顾客信息">
+			<template v-slot:content>
+				<ul>
+					<li>one</li>
+					<li>two</li>
+				</ul>
+			</template>
+			<template v-slot:footer>
+				<p>end...</p>
+			</template>
+			
+		</my-test>
+		<my-test >1</my-test>
+	</div>
+	<script>
+		Vue.component("my-test",{
+			template:`
+				<div class="container">
+					<div>
+						<h2 class="title">{{title}}</h2>
+						<div class="content">
+							<slot name="content"></slot>
+						</div>
+						<div class="footer">
+							<slot name="footer"></slot>
+						</div>
+					</div>
+				</div>
+			`,
+			props:["title"]
+			
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				total:0
+			}
+		})
+	</script>
+</body>
+</html>

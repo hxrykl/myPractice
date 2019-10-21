@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-ajax</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$(function(){
+			//alert(1);
+			var url = "http://134.175.154.93:6677/customer/findCustomerAll";
+
+			$.get(url,function(data,textStatus){
+				console.log(data,textStatus);
+			})
+
+			
+
+		})
+	</script>
+</body>
+</html>

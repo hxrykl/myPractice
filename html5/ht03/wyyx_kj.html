@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网易严选</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1328631_5wvj1nw2nr7.css">
+	<!-- 头部开始 -->
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			border: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+
+		}
+		.top{
+			background-color: #333;
+		}
+		.limit{
+			width: 1090px;
+			margin: 0 auto;
+			font-size: 12px;
+		}
+		.limit::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.discount{
+			float: left;
+			line-height: 3em;
+		}
+		.discount>p{
+			color: #b4a078;/*网页主题金*/
+			text-decoration: underline;
+			float: left;
+			margin-left: 10px;
+		}
+		.discount>i{
+			color: #b4a078;
+			float: left;
+			line-height: 2.3em;
+		}
+		.download{
+			color: #ccc;
+			float: right;
+			line-height: 3em;
+		}
+		.download>div{
+			float: right;
+		}
+		.download>div>a{
+			color: #ccc;
+			padding: 0 1em;
+		}
+		.download>div~*{
+			line-height: 3em
+		}
+		.download>div~*>a{
+			border-right: 1px solid rgba(204,204,204,0.5);
+			color: #ccc;
+		}
+		.download div i{
+			color: #ccc;
+			font-size: 10px;
+		}
+	</style>
+	<!-- 头部结束 -->
+	<!-- 搜索开始 -->
+	<style>
+		.search{
+			background-color: #fff;
+		}
+		.search>div{
+			/*height: 140px;*/
+			padding: 1px;
+			box-sizing: border-box;
+
+		}
+		.search .logo{
+			background-image: url('yximages/logo.png');
+            background-size: 124px 60px;
+			width: 124px;
+			height:60px;
+			float: left;
+		}
+		.search li:nth-child(2){
+			float: left;
+		}
+		.search li:nth-child(2)>div:first-child{
+			height: 36px;
+			width: 532px;
+			border: 1px solid #b4a078;
+			box-sizing:border-box;
+			border-radius:30px;
+			line-height: 35px;
+			margin-left: 240px;
+		}
+		.search li:nth-child(2)>div>i{
+			color: #dcdcdc;
+			padding: 0 10px;
+		}
+		.search li:nth-child(2)>div>input{
+			line-height: 0;
+		}
+		.search li:nth-child(2)>div:first-child>p{
+			background-color: #b4a078;
+			width: 90px;
+			border-top-right-radius: 30px;
+			border-bottom-right-radius: 30px;
+			text-align: center;
+			font-size: 16px;
+			color: #fff;
+		}
+		.search li:nth-child(2)>div>p{
+			float: right;
+		}
+		.search li:nth-child(2)>div+*{
+			line-height: 2.5em;
+		}
+		.search li:nth-child(2)>div+*>p~*>a{
+			border-right: 1px solid #a9a9a9;
+		}
+		.search li a{
+			padding: 0 1em;
+			color: #a9a9a9;
+		}
+		.search .shopping_cart{
+			margin-left: 940px;
+			margin-top: 26px;
+			width: 134px;
+			height: 36px;
+			border: 1px solid #b4a078;
+			border-radius: 30px;
+			color: #b4a078;
+			line-height: 30px;
+			font-size: 14px;
+		}
+		.search li:nth-child(3) > i{
+			float: left;
+			margin-left: 10px;
+			line-height: 36px;
+		}
+		.search li:nth-child(3)>p{
+			float: left;
+			padding: 5px 7px;
+		}
+		.search li:nth-child(3)> p+*{
+			background-color: #FF0000;
+			border-radius: 10px;
+			line-height: 7px;
+			margin-top: 8px;
+			margin-right: 3px;
+			padding: 7px;
+
+		}
+		.search .menu{
+			font-weight: bold;
+			color: #000;
+			font-size: 14px;
+			margin-top: 43px;
+
+		}
+		.search .menu > ul::after{
+			content: '';
+			clear: both;
+			display: block;
+
+		}
+		.search .menu > ul > li{
+			float: left;
+			padding: 8px 24px;
+		}
+	</style>
+	<!-- 搜索结束 -->
+	<!-- 滑块开始 -->
+	<style>
+		.slider>div{
+			height: 420px;
+			width: 1920px;
+			margin: 0 auto;
+
+		}
+		.slider{
+			overflow: hidden;
+		}
+	</style>
+	<!-- 滑块结束 -->
+	<!-- 内容开始 -->
+	<style>
+		/*品牌制造商*/
+		.factory{
+			height: 368px;
+			/*background: #a9a9a9;*/
+			margin-top: 30px;
+		}
+		.more{
+			height: 48px;
+			box-sizing: border-box;
+			padding-bottom: 20px;
+		}
+		.more_title{
+			float: left;
+			font-size: 24px;
+			font-weight: bold;
+			margin-right: 20px;
+		}
+		.more_slogan{
+			font-size: 14px;
+			float: left;
+			height: 28px;
+			box-sizing: border-box;
+			padding-top: 10px;
+		}
+		.more_go{
+			float: right;
+			height: 28px;
+			box-sizing: border-box;
+			padding-top: 14px;
+			font-size: 14px;
+		}
+		.main_fa{
+			height: 320px;
+			box-sizing: border-box;
+		}
+		.main_fa>ul>li{
+			float: left;
+			width: 357px;
+			background: #dcdcdc;
+			height: 320px;
+		}
+		.main_fa>ul>li+*{
+			margin-left: 9px;
+		}
+		.main_fa>ul>li:nth-child(1){
+			background-image: url('yximages/hwzzs.png');
+			background-size: 357px 320px;
+		}
+		.main_fa>ul>li:nth-child(2){
+			background-image: url('yximages/ckzzs.png');
+			background-size: 357px 320px;
+		}
+		.main_fa>ul>li:nth-child(3){
+			height: 155px;
+			background-image: url('yximages/xxlzzs.png');
+			background-size: 357px 155px;
+		}
+		.main_fa>ul>li:nth-child(4){
+			background-image: url('yximages/arzzs.png');
+			background-size: 357px 155px;
+			height: 155px;
+			margin:10px 0 0 10px; 
+		}
+		/*新品首发*/
+			.new_products{
+				height: 450px;
+				/*background: #c0c0c0;*/
+				padding-top: 60px;
+			}
+			.main_new>ul>li{
+				float: left;
+				height: 334.6px;
+				width: 265px;
+				margin-right: 10px;
+				background: #dcdcdc;
+				background-size: 265px 334.6px;
+			}
+			.main_new>ul>li:last-child{
+				margin-right: 0;
+				background-image: url('yximages/xinpin4.png');
+			}
+			.main_new>ul>li:first-child{
+				background-image: url('yximages/xinpin1.png');
+			}
+			.main_new>ul>li:nth-child(2){
+				background-image: url('yximages/xinpin2.png');
+			}
+			.main_new>ul>li:nth-child(3){
+				background-image: url('yximages/xinpin3.png');
+			    
+			}
+		/*人气推荐*/
+			.recommend{
+				background: #f4f0ea;
+				height: 578px;
+				padding: 60px 0;
+			}
+			.more_re{
+				float: left;
+				box-sizing: border-box;
+				height: 28px;
+				padding-top:10px;
+			}
+			.more_re>p{
+				float: left;
+				padding:0 10px;
+			}
+			.recommend ul>li{
+				float: left;
+				background: #fff;
+			}
+			.recommend ul>li:first-child{
+				height: 530px;
+				width: 390px;
+				background-image: url('yximages/renqi1.png');
+				background-size: 390px 530px;
+			}
+			.recommend ul>li~*{
+				height: 260px;
+				width: 223px;
+				margin-left: 10px;
+				background-size: 223px 260px;
+			}
+			.recommend ul>li.four~*{
+				margin-top: 10px;
+			}
+			.recommend ul>li:nth-child(2){
+				background-image: url('yximages/renqi2.png');
+			}
+			.recommend ul>li:nth-child(3){
+				background-image: url('yximages/renqi3.png');
+			}
+			.recommend ul>li:nth-child(4){
+				background-image: url('yximages/renqi4.png');
+			}
+			.recommend ul>li:nth-child(5){
+				background-image: url('yximages/renqi5.png');
+			}
+			.recommend ul>li:nth-child(6){
+				background-image: url('yximages/renqi6.png');
+			}
+			.recommend ul>li:nth-child(7){
+				background-image: url('yximages/renqi7.png');
+			}
+		/*限时购*/
+			.limited_time{
+				/*background: #c0c0c0;*/
+				height: 425px;
+				padding-top: 58px;
+			}
+			.limited_time>ul>li{
+				float: left;
+				background: #fff;
+				box-sizing: border-box;
+			}
+			.limited_time>ul>li:first-child{
+				height: 377px;
+				width: 224px;
+				background-image: url('yximages/xians1.png');
+				background-size: 224px 377px;
+			}
+			.limited_time>ul>li:nth-child(2){
+				background-image: url('yximages/xians2.png');
+			}
+			.limited_time>ul>li:nth-child(3){
+				background-image: url('yximages/xians3.png');
+			}
+			.limited_time>ul>li:nth-child(4){
+				background-image: url('yximages/xians4.png');
+			}
+			.limited_time>ul>li:nth-child(5){
+				background-image: url('yximages/xians5.png');
+			}
+			.limited_time>ul>li~*{
+				height: 189px;
+				width: 433px;
+				border-top:1px solid rgba(0,0,0,0.3);
+				border-right: 1px solid rgba(0,0,0,0.3);
+				border-bottom:1px solid rgba(0,0,0,0.3);
+				margin-top: -1px;
+				background-size: 433px 189px;
+			}
+		/*福利社*/
+			.welfare{
+				background:#f4f0ea;
+				height: 424px;
+				padding: 51px 0;
+				margin-top: 60px;
+			}
+			.welfare ul+*>li{
+				float: left;
+				background: #fff;
+			}
+			.welfare ul+*>li:first-child{
+				width: 224px;
+				height: 376px;
+				background-image: url('yximages/fuli1.png');
+				background-size: 224px 376px;
+			}
+			.welfare ul li.two{
+				width: 588px;
+				height: 376px;
+				padding: 0 18px;
+			}
+			.welfare ul li.two~*{
+				float: none;
+				margin-left: 848px;
+				width: 199px;
+				height: 188px;
+				padding: 0 21px;
+				border-left: 1px solid rgba(0,0,0,0.2);
+			}
+			.welfare ul li.two>div{
+				height: 56px;
+			}
+			.welfare ul li.two ul{ 
+				margin-top: 20px;
+			}
+			.welfare ul li.two li{
+				float: left;
+				width: 284px;
+				height: 130px;
+				margin-bottom: 20px;
+				background: #dcdcdc;
+				background-size: 284px 130px;
+			}
+			.welfare ul li.two li:first-child{
+				margin-right: 20px;
+				background-image: url('yximages/fuli2.png');
+			}
+			.welfare ul li.two li:nth-child(2){
+				background-image: url('yximages/fuli3.png');
+			}
+			.welfare ul li.two li:nth-child(3){
+				margin-right: 20px;
+				background-image: url('yximages/fuli4.png');
+			}
+			.welfare ul li.two li:nth-child(4){
+				background-image: url('yximages/fuli5.png');
+			}
+			.welfare ul li.two~*>div{
+				height: 51px;
+			}
+			.welfare ul li.two~*>ul>li{
+				height: 50px;
+				margin-bottom: 20px;
+				background: #cdcdcd;
+				background-size: 199px 50px;
+			}
+			.welfare ul li.two~*>ul>li:first-child{
+				background-image: url('yximages/fuli6.png');
+			}
+			.welfare ul li.two~*>ul>li:last-child{
+				background-image: url('yximages/fuli7.png');
+			}
+		/*重复盒子*/
+			.repeat{
+				margin-top: 60px;
+			}
+			.re_center{
+				height: 789px;
+			}
+	        
+	        .re_more>ul>li:first-child{
+	        	float: left;
+	        }
+	        .re_more>ul>li+*{
+	        	float: right;
+	        }
+	        .re_more li+* li{
+	        	float: left;
+	        }
+	        .more_menu{
+	        	font-size: 14px;
+	        	height: 28px;
+	        	box-sizing: border-box;
+	        	padding-top: 13px;
+	        	float: right;
+	        	margin-right: 20px;
+	        }
+	        .more_menu i{
+	        	padding:0 12px;
+	        }
+	        .re_slider{
+	        	height: 310px;
+	        	margin-bottom: 20px;
+	        	background:pink;
+	        }
+	        .re_products{
+	        	/*background: #d3d3d3;*/
+	        	height: 411px;
+	        }
+	        .re_products li{
+	        	width: 265px;
+	        	height: 361px;
+	        	margin: 0 10px 50px 0;
+	        	/*background: #f5f5f5;*/
+	        	float: left;
+	        	background-size: 265px 361px;
+	        }
+	        .re_products li:last-child{
+	        	margin-right: 0;
+	        }
+	       /* .re_products li>p{
+	        	width: 265px;
+	        	height: 265px;
+	        	margin-bottom: 8px;
+	        	background: #FFDEAD;
+	        }*/
+	        .re_products li>div>div:first-child{
+	        	height: 20px;
+	        	margin-bottom: 3px;
+	        	background: #EEE8AA;
+	        }
+	        .re_products li>div>div+*{
+	        	height: 20px;
+	        	margin-bottom: 4px;
+	        	background: #EEE8AA;
+	        }
+	        .re_products li>div>div:last-child{
+	        	height: 14px;
+	        	background: #EEE8AA;
+	        	padding: 5px;
+	        }
+	        /*居家生活*/
+	        .home_slbg{
+	        	background-image: url('yximages/jiaj1.jpg');
+                background-size: 1090px 310px;
+	        }
+	        .home_pr>ul>li:nth-child(1){
+				background-image: url('yximages/jiaj2.png');
+	        }
+	        .home_pr>ul>li:nth-child(2){
+				background-image: url('yximages/jiaj3.png');
+	        }
+	        .home_pr>ul>li:nth-child(3){
+				background-image: url('yximages/jiaj4.png');
+	        }
+	        .home_pr>ul>li:nth-child(4){
+				background-image: url('yximages/jiaj5.png');
+	        }
+	        /*服饰鞋包*/
+        /*甄选家*/
+	        .pick{
+	        	height: 428px;
+	        	/*background: #FFFFE0;*/
+
+	        }
+	        .pick li{
+	        	float: left;
+	        	background: #cdcdcd;
+	        }
+	        .pick li:first-child{
+	        	width: 690px;
+	        	height: 380px;
+                background-image: url('yximages/zhenx1.png');
+                background-size: 690px 380px;
+	        }
+	        .pick li~*{
+				width: 390px;
+				height: 184.8px;
+				margin-left: 10px;
+				background-size: 390px 184.8px;
+	        }
+	        .pick li:last-child{
+	        	margin-top: 10px;
+	        	background-image: url('yximages/zhenx3.png');
+	        }
+	        .pick li:nth-child(2){
+	        	background-image: url('yximages/zhenx2.png');
+	        }
+        /*大家都在说*/
+			.everybody{
+				background: #f4f0ea;
+				padding: 60px 0;
+				height: 540px;
+			}
+			.everybody li{
+				float: left;
+				width: 356px;
+				height: 492px;
+				margin-right: 10px;
+				background: #BDB76B;
+				background-size: 356px 492px;
+			}
+			.everybody li:last-child{
+				margin-right: 0;
+				background-image: url('yximages/dajia3.png');
+			}
+			.everybody li:first-child{
+				background-image: url('yximages/dajia1.png');
+			}
+			.everybody li:nth-child(2){
+				background-image: url('yximages/dajia2.png');
+			}
+	</style>
+	<!-- 内容结束 -->
+	<!-- 客服反馈开始 -->
+	<style>
+		.feedback{
+			/*background: pink;*/
+			padding: 60px 0 34px;
+			height: 204px;
+		}
+		.feedback li{
+			float: left;
+			background: #fff;
+			width: 363px;
+			height: 204px;
+			border-right: 1px solid rgba(0,0,0,0.3);
+			background-size: 363px 204px;
+		}
+		.feedback li:last-child{
+			border: 0;
+			float: none;
+			margin-left: 727px;
+			background-image: url('yximages/fank3.png');
+		}
+		.feedback li:first-child{
+			background-image: url('yximages/fank1.png');
+		}
+		.feedback li:nth-child(2){
+			background-image: url('yximages/fank2.png');
+		}
+	</style>
+	<!-- 客服反馈结束 -->
+	<!-- 底部开始 -->
+	<style>
+		.bottom{
+			height: 190px;
+			padding: 40px 0 20px;
+			background: #414141;
+		}
+		.bottom>div>div:first-child{
+			height: 50px;
+			padding-bottom: 30px;
+			border-bottom: 1px solid rgba(220,220,220,0.5);
+			margin-bottom: 27px;
+			background-image: url('yximages/dibu1.png');
+			background-size: 1090px 80px;
+		}
+		.bottom>div>div:last-child{
+			height: 77px;
+			background-image: url('yximages/dibu2.png');
+			background-size: 1090px 77px;
+		}
+	</style>
+	<!-- 底部结束 -->
+</head>
+<body>
+	<!-- 头部开始 -->
+	<div class="top">
+		<!-- 内容限制框开始 -->
+		<div class="limit">
+			<!-- 浦发借记卡开始 -->
+			<div class="discount">
+				<i class="iconfont iconweibiaoti555"></i>
+				<p>用浦发借记卡【满100立减20元】可叠加其他优惠</p>	
+			</div>
+			<!-- 浦发借记卡结束开始 -->
+			<!-- 注册/登录/APP下载 -->
+			<div class="download">
+				<!-- APP下载开始 -->
+				<div>
+					<a href="">
+						<i class="iconfont iconicon"></i>APP
+					</a>
+				</div>
+				<!-- APP下载结束 -->
+				<!-- 客户服务开始 -->
+				<div>
+					<a href="">客户服务
+						<i class="iconfont iconxiangxia"></i>
+					</a>
+				</div>
+				<!-- 客户服务结束 -->
+				<!-- 企业采购开始 -->
+				<div>
+					<a href="">企业采购
+						<i class="iconfont iconxiangxia"></i>
+					</a>
+				</div>
+				<!-- 企业采购结束 -->
+				<!-- 甄选家开始 -->
+				<div><a href="">甄选家</a></div>
+				<!-- 甄选家结束 -->
+				<!-- 会员开始 -->
+				<div><a href="">会员</a></div>
+				<!-- 会员结束 -->
+				<!-- 我的订单开始 -->
+				<div><a href="">我的订单</a></div>
+				<!-- 我的订单结束 -->
+				<!-- 注册/登录开始 -->
+				<div><a href="">登录/注册</a></div>
+				<!-- 注册/登录结束 -->
+			</div>
+			<!-- 注册/登录/APP下载结束 -->
+		</div>
+		<!-- 内容限制框结束 -->
+	</div>
+	<!-- 头部结束 -->
+	<!-- 搜索开始 -->
+	<div class="search">
+		<div class="limit">
+			<ul>
+				<!-- logo图片开始 -->
+				<li class="logo">
+				</li>
+				<!-- logo图片结束 -->
+				<!-- 输入搜索开始 -->
+				<li>
+					<div>
+						<i class="iconfont iconweibiaoti524"></i>
+						<input type="text" placeholder="超轻口袋遮阳伞">
+						<p>搜索</p>
+					</div>
+					<div>
+						<p><a href="">珠宝饰品7.4折起</a></p>
+						<p><a href="">高颜值水杯49元起</a></p>
+						<p><a href="">乳胶席 直降110</a></p>
+					</div>
+				</li>
+				<!-- 输入搜索结束 -->
+				<!-- 购物车开始 -->
+				<li class="shopping_cart">
+					<i class="iconfont icongouwuche"></i>
+					<p>购物车</p>
+					<p>0</p>
+				</li>
+				<!-- 购物车结束 -->
+				<!-- 菜单开始 -->
+				<li class="menu">
+					<ul>
+						<li>首页</li>
+						<li>居家生活</li>
+						<li>服饰鞋包</li>
+						<li>美食酒水</li>
+						<li>个护清洁</li>
+						<li>母婴亲子</li>
+						<li>运动旅行</li>
+						<li>数码家电</li>
+						<li>全球特色</li>
+						<li>为你严选</li>
+						<li>众筹</li>
+					</ul>
+				</li>
+				<!-- 菜单结束 -->
+			</ul>
+		</div>
+	</div>
+	<!-- 搜索结束 -->
+	<!-- 滑块开始 -->
+	<div class="slider">
+		<div>
+			<img src="yximages/xiqi.jpg" alt="爱吃福利站">
+		</div>
+	</div>
+	<!-- 滑块结束 -->
+	<!-- 内容开始 -->
+		<!-- 品牌制造商开始 -->
+		<div class="limit factory">
+			<!-- 更多品牌制造商开始 -->
+			<div class="more">
+				<div class="more_title">品牌制造商</div>
+				<p class="more_slogan">工厂直达消费者，剔除商品溢价</p>
+				<div class="more_go">
+					更多制造商
+					<i class="iconfont iconxiangyou"></i>
+				</div>
+			</div>
+			<!-- 更多品牌制造商结束 -->
+			<!-- 主要品牌制造商开始 -->
+			<div class="main_fa">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<!-- 主要品牌制造商结束 -->
+		</div>
+		<!-- 品牌制造商结束 -->
+		<!-- 新品首发开始 -->
+		<div class="limit new_products">
+			<!-- 更多新品开始 -->
+			<div class="more">
+				<div class="more_title">新品首发</div>
+				<p class="more_slogan">为你寻觅世间好物</p>
+				<div class="more_go">
+					更多新品
+					<i class="iconfont iconxiangyou"></i>
+				</div>
+			</div>
+			<!-- 更多新品结束 -->
+			<!-- 主打新品开始 -->
+			<div class="main_new">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<!-- 主打新品结束 -->
+		</div>
+		<!-- 新品首发结束 -->
+		<!-- 人气推荐开始 -->
+		<div class="recommend">
+			<div class="limit">
+				<!-- 更多推荐开始 -->
+				<div class="more">
+					<div class="more_title">人气推荐</div>
+					<div class="more_re">
+						<p>编辑推荐</p>
+						<p>热销总榜</p>
+					</div>
+					<div class="more_go">
+						更多推荐
+						<i class="iconfont iconxiangyou"></i>
+					</div>
+			    </div>
+				<!-- 更多推荐结束 -->
+				<!-- 主要推荐开始 -->
+				<ul class="oe">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li class="four"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<!-- 主要推荐结束 -->
+			</div>
+		</div>
+		<!-- 人气推荐结束 -->
+		<!-- 限时购开始 -->
+		<div class="limit limited_time">
+			<!-- 更多抢购开始 -->
+			<div class="more">
+				<div class="more_title">限时购</div>
+				<div class="more_go">
+					更多抢购
+					<i class="iconfont iconxiangyou"></i>
+				</div>
+			</div>
+			<!-- 更多抢购结束 -->
+			<!-- 主打抢购商品开始 -->
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<!-- 主打抢购商品结束 -->
+		</div>
+		<!-- 限时购结束 -->
+		<!-- 福利社开始 -->
+		<div class="welfare">
+			<div class="limit">
+				<!-- 更多福利开始 -->
+				<ul class="more">
+					<div class="more_title">福利社</div>
+					<div class="more_go">
+						查看全部福利
+						<i class="iconfont iconxiangyou"></i>
+					</div>
+				</ul>
+				<!-- 更多福利结束 -->
+				<!-- 超级福利开始 -->
+				<ul>
+					<!-- 滑动图片开始 -->
+					<li></li>
+					<!-- 滑动图片结束 -->
+					<!-- 今日特价开始 -->
+					<li class="two">
+						<!-- 查看全部特价开始 -->
+						<div></div>
+						<!-- 查看全部特价结束 -->
+						<!-- 今日特价商品开始 -->
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						<!-- 今日特价商品结束 -->
+					</li>
+					<!-- 今日特价结束 -->
+					<!-- 量贩囤货开始 -->
+					<li>
+						<!-- 查看全部囤货开始 -->
+						<div></div>
+						<!-- 查看全部囤货结束 -->
+						<!-- 囤货商品开始 -->
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+						<!-- 囤货商品结束 -->
+					</li>
+					<!-- 量贩囤货结束 -->
+					<!-- 今日APP价开始 -->
+					<li>
+						<!-- 查看全部APP价开始 -->
+						<div></div>
+						<!-- 查看全部APP价结束 -->
+						<!-- 今日APP价商品开始 -->
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+						<!-- 今日APP价商品结束 -->
+					</li>
+					<!-- 今日APP价结束 -->
+				</ul>
+				<!-- 超级福利结束 -->
+			</div>
+		</div>
+		<!-- 福利社结束 -->
+		<!-- 重复盒子开始 -->
+		<div class="repeat">
+			<!-- 居家生活开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 居家生活结束 -->
+			<!-- 服饰鞋包开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 服饰鞋包结束 -->
+			<!-- 美食酒水开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 美食酒水结束 -->
+			<!-- 个护清洁开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 个护清洁结束 -->
+			<!-- 母婴亲子开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 母婴亲子结束 -->
+			<!-- 运动旅行开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 运动旅行结束 -->
+			<!-- 数码家电开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 数码家电结束 -->
+			<!-- 全球特色开始 -->
+			<div class="limit re_center">
+				<!-- 主题头部开始 -->
+				<div class="re_more">
+					<ul class="more">
+						<!-- 标题开始 -->
+						<li class="more_title">居家生活</li>
+						<!-- 标题结束 -->
+						<!-- 查看更多开始 -->
+						<li>
+							<div class="more_go">查看更多<i class="iconfont iconxiangyou"></i></div>
+							<ul class="more_menu">
+								<li>夏凉热卖<i>/</i></li>
+								<li>主题床品<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖<i>/</i></li>
+								<li>夏凉热卖</li>
+							</ul>
+						</li>
+						<!-- 查看更多结束 -->
+					</ul>
+				</div>
+				<!-- 主题头部结束 -->
+				<!-- 滑块开始 -->
+				<div class="re_slider home_slbg">
+				</div>
+				<!-- 滑块结束 -->
+				<!-- 商品区开始 -->
+				<div class="re_products home_pr">
+					<ul>
+						<li>
+							<p></p>
+							<!-- <div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div> -->
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+						<li>
+							<p></p>
+							
+						</li>
+					</ul>
+				</div>
+				<!-- 商品区结束 -->
+			</div>
+			<!-- 全球特色结束 -->
+		</div>
+		<!-- 重复盒子结束 -->
+		<!-- 甄选家开始 -->
+		<div class="limit pick">
+			<div class="more">
+				<div class="more_title">甄选家</div>
+				<p class="more_slogan">我们在寻找，对生活有态度的你</p>
+			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<!-- 甄选家结束 -->
+		<!-- 大家都在说开始 -->
+		<div class="everybody">
+			<div class="limit ">
+				<div class="more">
+				<div class="more_title">大家都在说</div>
+				<p class="more_slogan">生活，没有统一的标准</p>
+			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			</div>
+		</div>
+		<!-- 大家都在说结束 -->
+	<!-- 内容结束 -->
+	<!-- 客服反馈开始 -->
+	<div class="limit feedback">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- 客服反馈结束 -->
+	<!-- 底部开始 -->
+	<div class="bottom">
+		<div class="limit ">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!-- 底部结束 -->
+
+</body>
+</html>

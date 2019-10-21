@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>axios</title>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+	<script>
+		//底层接口
+		/*axios({
+			url:"http://39.105.108.131:6677/order/findAll"
+		})
+		.then((response)=>{
+			console.log(response);
+		})*/
+
+		//默认参数为json形式,而jquery默认为js
+		axios({
+			url:"http://39.105.108.131:6677/customer/saveOrUpdate",
+			method:"post",
+			data:{
+				realname:"张莉莉",
+				telephone:"123543547677",
+			},
+			headers:{
+				"Content-Type":"appliction/x-www/urlencoded"
+			},
+			transformRequest:[(data,headers)=>{
+				//将data转换为查询字符串
+				//方法一
+				//return qs.stringify(data);//qs不支持非模块化，但这可方法在nodejs能用
+				//方法二
+				let q ="";
+				for(let key in data){
+					let val = data[key];
+					q+= (key+"="+val+"&")
+				}
+				return q.slice(0,q.length-1);
+
+			}]
+		})
+		.then((response)=>{
+			console.log("response:",response);
+		})
+		.catch((error)=>{
+			console.log("error:",error);
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

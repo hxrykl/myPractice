@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style type="text/css">
+		*{margin:0;padding: 0;}
+		#dest{
+			background: skyblue;
+			padding: 30px;
+		}
+		h3{
+			line-height: 50px;
+			font-size: 25px;
+		}
+		#content{
+			background: yellow;
+			padding-left: 30px;
+			padding-bottom: 50px;
+		}
+		ul li{
+			list-style: none;
+			display: inline;
+			background: blue;
+			color: #fff;
+			line-height: 50px;
+			padding: 5px 20px;
+			margin-right: 20px;
+		}
+		#del{
+			width: 150px;
+			height: 150px;
+			color: #fff;
+			background: red;
+			border-radius: 50%;
+			font-size: 30px;
+			font-weight: 900;
+			text-align: center;
+			line-height: 150px;
+			margin:100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="dest">
+		<h3>收藏夹：</h3>
+		<ul id="dest_menu"></ul>
+	</div>
+	<div id="content">
+		<h3>您可能喜欢的歌曲：</h3>
+		<ul id="menu">
+			<li draggable="true" id="m1" ondragstart="save(event)">听妈妈的话</li>
+			<li draggable="true" id="m2" ondragstart="save(event)">龙拳</li>
+			<li draggable="true" id="m3" ondragstart="save(event)">爱在西元前</li>
+			<li draggable="true" id="m4" ondragstart="save(event)">青花瓷</li>
+			<li draggable="true" id="m5" ondragstart="save(event)">简单爱</li>
+		</ul>
+		<div id="del">垃圾桶</div>
+	</div>
+	<script type="text/javascript">
+		function save(e){
+			e.dataTransfer.effectAllowed="copy";
+				e.dataTransfer.setData("text/plain",e.target.id);
+		}
+		var del = document.getElementById('del');
+		//console.log(del);
+		var menu = document.getElementById('menu');
+		del.addEventListener("drop", function(e){
+			//this.style.background = "green";
+			var id = e.dataTransfer.getData("text/plain");
+			//怎么通过ID将menu中的这个元素删除
+			//removeChild   传是个父元素中的一个子元素
+			var c = document.getElementById(id);
+			menu.removeChild(c);
+		},false);
+
+		var dest = document.getElementById('dest');
+		var dest_menu = document.getElementById("dest_menu");
+		dest.addEventListener("drop", function(e){
+			e.dataTransfer.dropEffect="copy";
+			var id = e.dataTransfer.getData("text/plain");
+			//怎么通过ID将这个元素加入收藏列表
+			var c = document.getElementById(id);
+			dest_menu.appendChild(c);
+		},false);
+
+
+
+
+
+		document.ondragend =function(e){e.preventDefault();e.stopPropagation();}
+		document.ondragover =function(e){e.preventDefault();e.stopPropagation();}
+	</script>
+</body>
+</html>

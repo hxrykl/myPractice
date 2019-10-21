@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态表格</title>
+	<style>
+
+		.btn{
+			display: inline-block;
+			padding: 0.5em 1em;
+			border-radius: 3px;
+			background-color: blue;
+			color: #fff;
+			cursor: pointer;
+			margin-bottom: 20px;
+		}
+		table.table{
+			width: 100%;
+			border-collapse: collapse;
+			box-sizing: border-box;
+		}
+		table.table td,
+		table.table th{
+			border: 1px solid #ccc;
+			line-height: 2em;
+			text-align: center;
+			height: 70px;
+		}
+		table.table tr.current{
+			background-color: #ccc;
+		}
+		.none{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn" id="btn_add">添加</div>
+	<div class="btn">批量导入</div>
+	<div class="btn">批量删除</div>
+	<div class="forms">
+		<form action="javascript:void(0)">
+			<input type="hidden" name="id"/>
+			<table>
+				<tbody>
+					<tr>
+						<td>姓名</td>
+						<td><input type="text" name="realname"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>手机号</td>
+						<td><input type="text" name="telephone"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" value="保存">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<table class="table">
+		<thead>
+			<th>编号</th>
+			<th width="200px">姓名</th>
+			<th>头像</th>
+			<th>手机</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr class="none">
+				<td> 
+					<input type="checkbox">
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<!-- 取消a标签点击反应事件 -->
+					<a class="btn_del" href="javascript:void(0)">删除</a>
+					<a class="btn_change" href="javascript:void(0)">修改</a>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="../js03/fengzhuang.js">
+	</script>
+	<script>
+		
+		var btn_add = document.getElementById("btn_add");
+
+		var tbody = document.getElementsByTagName("tbody")[1];
+
+		var btn_del = document.getElementsByClassName("btn_del");
+
+		var baseURL = "http://134.175.154.93:6677";
+		//console.log(tbody.firstElementChild);
+		//console.log(tbody.constructor);
+
+
+//添加信息
+		document.forms[0].onsubmit = function(event){
+			//alert(1);
+			//1校验有效值
+
+			//2获取有效值
+			var realname = document.querySelector("input[name=realname]").value;
+			var telephone = document.querySelector("input[name=telephone]").value;
+			var id = document.querySelector("input[name=id]").value;
+			//alert(realname+telephone);
+			//3与后台进行交互
+			// var xhr = new XMLHttpRequest();
+			// xhr.open("POST",baseURL+"/customer/saveCustomerOrUpdateCustomer");
+			// xhr.responseType = "json";
+
+			// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			// var data;
+			// if(id){
+			// 	data = "id="+id+"&realname="+realname+"&telephone="+telephone;
+			// }else{
+			// 	data = "realname="+realname+"&telephone="+telephone;
+			// }
+
+			// xhr.send(data);
+			// xhr.onreadystatechange = function(){
+			// 	if(this.readyState ===4){
+			// 		if(this.status === 200){
+			// 			//刷新数据
+			// 			initData();
+			// 			//提示成功信息
+			// 			if(id){
+			// 				alert(this.response.message);
+			// 			}else{
+							
+			// 				alert("添加成功");
+			// 			}
+						
+			// 		}
+
+			// 	}
+			// }
+
+			
+			var url =baseURL+"/customer/saveCustomerOrUpdateCustomer";
+			var data;
+			if(id){
+				data = "id="+id+"&realname="+realname+"&telephone="+telephone;
+			}else{
+				data = "realname="+realname+"&telephone="+telephone;
+			}
+			//ajax
+			$.post(url,data,function(result){
+				if(id){
+			 		alert(this.response.message);
+			 	}else{
+					alert("添加成功");
+				}
+				initData();
+			});
+			event.preventDefault();
+
+		}
+
+//为删除/修改按钮绑定事件处理函数
+		tbody.onclick = function(event){
+			// var target = event.target;
+			// //alert(target.nodeName);
+			// if(target.nodeName === "A"){
+			// 	if(target.className === "btn_del"){
+			// 		//alert("删除完成");
+			// 		tbody.removeChild(target.parentNode.parentNode)
+			// 	}
+			// 	if(target.className === "btn_change"){
+			// 		alert("修改完成");
+			// 		//tbody.replaceChild(,target.parentNode.parentNode)
+			// 	}
+			// }
+
+			var target = event.target;
+			//删除
+			if(target.nodeName === "A"&&target.className === "btn_del"){
+				
+				//获取当前行的id
+				var id =target.parentNode.parentNode.children[0].children[0].value;
+
+				var url = baseURL+"/customer/deleteCustomerById";
+				var data = "id="+id;
+				$.post(url,data,function(result){
+  				    alert(result.message);
+					initData();
+				});
+				//1调用ajax删除数据库中的数据
+				/*var xhr = new XMLHttpRequest();
+				xhr.responseType = "json";
+				xhr.open("POST","http://134.175.154.93:6677/customer/deleteCustomerById");//后台写了删除数据库内容的功能
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xhr.send("id="+id);
+				xhr.onreadystatechange = function(){
+					if(this.readyState === 4){
+						if(this.status === 200){
+							console.log(this.response);
+							//alert(this.response);
+							if(this.response.status === 200){
+								//2重新查询
+								alert(this.response.message);
+								initData();
+
+							}else{
+								alert("删除失败");
+							}
+							
+						}
+					}
+				}*/
+
+
+
+				//
+
+			}else 
+			//修改
+			if(target.nodeName === "A"&&target.className === "btn_change"){
+				//将原有的信息放到表单中
+				var id = event.target.parentNode.parentNode.children[0].children[0].value;
+				var realname = event.target.parentNode.parentNode.children[1].innerText;
+				var telephone = event.target.parentNode.parentNode.children[3].innerText;
+				alert(id+telephone+realname);
+
+				document.querySelector("input[name=realname]").value = realname;
+				document.querySelector("input[name=telephone]").value = telephone;
+				document.querySelector("input[name=id]").value = id;
+				
+			}
+			
+
+			
+
+		}
+
+//添加按钮绑定点击事件函数
+		 btn_add.onclick = function(event){
+		 	// //产生一个tr
+		 	// var newTr = tbody.firstElementChild.cloneNode(true);
+		 	// //设置newTr.children[1]内的文本内容为0<且<1随机数
+		 	// /*newTr.children[1].innerText = "<strong>"+Math.random()+"</strong>";*/
+		 	// //解析<strong>标签
+		 	// newTr.children[1].innerHTML = "<strong>"+Math.random()+"</strong>";
+
+		 	// newTr.className="";//消掉class=none
+		 	// tbody.appendChild(newTr);//追加子节点
+		 	// //console.log(newTr);
+		 	// //将一个tr追加到tbody
+		 	document.querySelector("input[name=realname]").value = "";
+			document.querySelector("input[name=telephone]").value = "";
+			document.querySelector("input[name=id]").value = "";
+
+		 }
+
+
+ //鼠标放上去当前行添加背景色
+		 tbody.onmouseover = function(event){
+		 	var target = event.target;
+		 	if(target.nodeName =="TD"){
+		 		target.parentNode.className = "current";
+		 	}
+
+		 //	console.log(event);
+		 }
+		 //光标移出
+		 tbody.onmouseout = function(event){
+		 	var target = event.target;
+		 	if(target.nodeName =="TD"){
+		 		target.parentNode.className = "";
+		 	}
+		 	
+		 //	console.log(event);
+		 }
+         //调用函数
+		 initData();
+//初始化数据 
+		 function initData(){
+		 	//通过ajax获取后台数据，然后将数据显示到表格中
+		 	var url = baseURL+"/customer/findCustomerAll";
+		 	$.get(url,function(response){
+		 		//先将tbody中的数据清空掉
+				Array.prototype.slice.call(tbody.children,0).forEach(function(item,index){
+					if(index!=0){
+						tbody.removeChild(item);
+					}
+					
+				});
+				//遍历结果，渲染数据
+				response.data.forEach(function(item){
+					//console.log(item);
+					//产生一个tr
+ 					var newTr = tbody.firstElementChild.cloneNode(true);
+ 					//绑定id
+ 					newTr.children[0].children[0].value = item.id;
+ 					//innerHTML解析<strong>标签
+ 					//写入姓名
+ 					newTr.children[1].innerHTML = "<strong>"+item.realname+"</strong>";
+ 					//写入头像
+ 					newTr.children[2].innerHTML = "<img width='50' src=http://134.175.154.93:8888/group1/"+item.photo+">";
+ 					//写入电话
+ 					newTr.children[3].innerHTML = "<strong>"+item.telephone+"</strong>";
+
+ 					newTr.className="";//消掉class=none
+ 					tbody.appendChild(newTr);//追加子节点
+
+				});
+		 	})
+
+	 	    //1实例化对象
+			/*var xhr = new XMLHttpRequest();
+			//2设置请求行
+			xhr.open("get",'http://134.175.154.93:6677/customer/findCustomerAll');
+			//3设置请求头(Content-Type)
+			xhr.responseType = "json"; //设置响应的信息为json
+			//4设置请求体，并且发送
+			xhr.send();
+			//5监听响应
+			xhr.onreadystatechange = function(){
+				if(this.readyState === 4){
+					if(this.status === 200){
+						console.log(this.response); 
+						//先将tbody中的数据清空掉
+						Array.prototype.slice.call(tbody.children,0).forEach(function(item,index){
+							if(index!=0){
+								tbody.removeChild(item);
+							}
+							
+						})
+						//遍历结果，渲染数据
+						this.response.data.forEach(function(item){
+							//console.log(item);
+							//产生一个tr
+		 					var newTr = tbody.firstElementChild.cloneNode(true);
+		 					//绑定id
+		 					newTr.children[0].children[0].value = item.id;
+		 					//innerHTML解析<strong>标签
+		 					//写入姓名
+		 					newTr.children[1].innerHTML = "<strong>"+item.realname+"</strong>";
+		 					//写入头像
+		 					newTr.children[2].innerHTML = "<img width='50' src=http://134.175.154.93:8888/group1/"+item.photo+">";
+		 					//写入电话
+		 					newTr.children[3].innerHTML = "<strong>"+item.telephone+"</strong>";
+
+		 					newTr.className="";//消掉class=none
+		 					tbody.appendChild(newTr);//追加子节点
+
+						});
+					}else{
+						console.log("error");
+					}
+				}
+			}*/
+
+		 }
+
+	</script>
+	
+</body>
+</html>

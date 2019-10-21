@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>clock</title>
+<canvas id=clock width=400 height=400 style="background-color:skyblue"></canvas>
+<script type="text/javascript">
+	var canvas=document.getElementById("clock")
+	var ctx=canvas.getContext("2d");
+
+	
+	//定时器调用方法
+	function getTime(){
+	//获取系统当前时间	
+	var date=new Date();
+	var hour=date.getHours();
+	var minute=date.getMinutes();
+	var second=date.getSeconds();
+	//精确时针偏移量
+	hour=hour+minute/60;
+	//每秒清除一次画布
+	ctx.clearRect(0,0,400,400);
+
+	//表盘	
+	ctx.beginPath();
+	ctx.strokeStyle="black";
+	ctx.arc(200,200,150,0,360,false);
+	ctx.stroke();
+	ctx.closePath();
+	//刻度
+	for(i=1;i<=12;i++){
+		ctx.save();
+		ctx.translate(200,200);		
+		ctx.rotate(i*30*Math.PI/180);
+		ctx.beginPath();
+		ctx.strokeStyle="#0000000";
+		ctx.lineWidth=4;
+		ctx.moveTo(0,-150);
+		ctx.lineTo(0,-130);
+		ctx.stroke();
+		ctx.closePath();
+		ctx.restore();
+	}	
+	
+	//刻度	
+	for(i=1;i<=60;i++){
+		ctx.save();
+		ctx.translate(200,200);		
+		ctx.rotate(i*6*Math.PI/180);
+		ctx.beginPath();
+		ctx.strokeStyle="#0000000";
+		ctx.lineWidth=2;
+		ctx.moveTo(0,-150);
+		ctx.lineTo(0,-137);
+		ctx.stroke();
+		ctx.closePath();
+		ctx.restore();
+	}	
+	//秒针
+	ctx.save();
+	ctx.translate(200,200);
+	ctx.rotate(second*6*Math.PI/180);
+	ctx.beginPath();
+	ctx.strokeStyle="red";
+	ctx.lineWidth=2;
+	ctx.moveTo(0,8);
+	ctx.lineTo(0,-125);
+	ctx.stroke();
+	ctx.closePath();
+	ctx.restore();
+	//分针
+	ctx.save();
+	ctx.translate(200,200);
+	ctx.rotate(minute*6*Math.PI/180);
+	ctx.beginPath();
+	ctx.strokeStyle="#000000";
+	ctx.lineWidth=3;
+	ctx.moveTo(0,8);
+	ctx.lineTo(0,-112);
+	ctx.stroke();
+	ctx.closePath();
+	ctx.restore();
+	//时针
+	ctx.save();
+	ctx.translate(200,200);
+	ctx.rotate(hour*30*Math.PI/180);
+	ctx.beginPath();
+	ctx.strokeStyle="#000000";
+	ctx.lineWidth=4;
+	ctx.moveTo(0,8);
+	ctx.lineTo(0,-95);
+	ctx.stroke();
+	ctx.closePath();
+	ctx.restore();
+}
+getTime();
+//定时器
+setInterval(getTime,1000);
+</script>

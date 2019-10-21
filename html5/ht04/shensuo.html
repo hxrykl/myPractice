@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位布局</title>
+	<style>
+		.con{
+			width: 250px;
+			height: 250px;
+			background-color: #000;/*黑色*/
+		}
+		.posi{
+			width: 150px;
+			height: 100px;
+			background-color:#D3D3D3;/*灰色*/
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		.posi2{
+			width: 150px;
+			height: 100px;
+			background-color: #696969;/*浅灰色*/
+		}
+		.flo{
+			background-color: blue;
+			width: 150px;
+			height: 150px;
+			float: left;
+			z-index: 10;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="con">
+		<div class="posi"></div>
+		<div class="posi2"></div>
+	</div>
+</body>
+</html>

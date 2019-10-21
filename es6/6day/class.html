@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class</title>
+	<script>
+		function Animal(name){
+			this.name= name;
+		}
+		Animal.prototype.sayName = function(){
+			console.log("my name is ",this.name);
+		}
+
+		function Dog(name,age) {
+			// 借用构造函数继承
+			Animal.call(this,name)
+			this.age = age;
+		}
+		// 原型链继承
+		Dog.prototype = new Animal();
+		Dog.prototype.sayAge = function(){
+			console.log("my age is",this.age);
+		}
+
+		let d = new Dog("一休",2);
+		d.sayName()
+		d.sayAge();
+
+
+		class Animal1 {
+			// 构造函数
+			constructor(name){
+				this.name = name;
+			}
+			// 普通函数
+			sayName(){
+				console.log("我的名字为",this.name);
+			}
+		}
+
+		class Dog1 extends Animal1 {
+			constructor(name,age){
+				super(name);
+				this.age = age;
+			}
+			sayAge(){
+				console.log("我的年龄为",this.age);
+			}
+		}
+		let dog = new Dog1("一休",2.5);
+		dog.sayName();
+		dog.sayAge();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

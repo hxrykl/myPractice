@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>媒体查询</title>
+	<style>
+		.con{
+			background-color: #F5F5F5;
+			display: flex;
+			/*width: 100%;*/
+			flex-wrap: wrap;
+		}
+		.con > div{
+			float: left;
+			background-color: pink;
+			margin: 10px 5px;
+		}
+		/*平板*/
+		@media screen and (min-width: 768px) and (max-width: 1024px){
+
+			.con > div{
+				background-color: teal;
+				flex: 1 1 45%;
+			}
+		}
+		/*电脑*/
+		@media screen and (min-width: 1024px) {
+			.con > div{
+				background-color: blue;
+				flex: 1 1 15%;
+			}
+		}
+		/*手机*/
+		@media screen and (max-width: 768px){
+			.con > div{
+				background-color: #fff;
+				 flex: 1 1 100%;
+				flex-wrap: wrap;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="con">
+		<div>第一个盒子</div>
+		<div>第二个盒子</div>
+		<div>第三个盒子</div>
+		<div>第四个盒子</div>
+		<div>第五个盒子</div>
+		<div>第六个盒子</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>z-index</title>
+	<style>
+		.posi{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			top: 47px;
+			z-index: 1;    /*有效果*/
+		}
+		.posi2{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			position: absolute;
+			left: 20px;
+			top: 27px;
+		}
+		.flo{
+			background-color: blue;
+			width: 150px;
+			height: 150px;
+			float: left;
+			z-index: 10;    /*没有效果*/
+		}
+		.con{
+			width: 250px;
+			height: 250px;
+			background-color: teal;
+			z-index: 100;     /*没有效果*/
+		}
+	</style>
+</head>
+<body>
+	  <div class="posi">定位元素1</div>
+	<div class="posi2">定位元素2</div>
+	<div class="flo">浮动元素</div>
+	<div class="con">正常元素</div>
+</body>
+</html>

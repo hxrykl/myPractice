@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="com">
+		<div class="de">
+			<span>3123123</span>
+			<span>31231231sddasd</span>
+			<span>453453</span>
+		</div>
+		<div class="de">
+			<span>534534</span>
+			<span>54353</span>
+			<span>fsdfs</span>
+		</div>
+		<div class="de">
+			<span>dfs23vx</span>
+			<span>33vsdv32s</span>
+			<span>sb55sdv3sdfe</span>
+		</div>
+	</div>
+	<div>aaa-------------------------------</div>
+	<div class="chu"></div>
+	<button id="chulai">出来</button>
+	<input type="text">
+	<script>
+		var sousuo = function(){
+			//获取input数据
+			var inp = $('input[type=text]').val();
+			var pat = new RegExp(inp,'igm');
+			var quan= $('.com');
+			//var re = pat.exec(shuz);
+			console.log($('span').toArray());
+			var aa = $('.de');
+			console.log("1",aa);
+			var bb = $(aa).map(function(index,item){
+				
+				var shuz = $(item).text();
+				console.log(shuz,"shuz");
+				var re = pat.exec(shuz);
+				if(re){
+					$('.chu').append(item);
+				}else{
+					return index;
+				}
+				
+			}).toArray();
+			$(bb).map(function(n,item){
+				var n = item;
+				console.log(n);
+				//$('.chu').append('<i>aa');
+				
+			});
+			
+			console.log("bb",bb);
+			var re;
+			//while((re = pat.exec(aa)) != null){
+				console.log("1",re);
+			//}
+			
+			
+		}
+		$('#chulai').click(function(){
+			sousuo();
+		});
+		$('input[type=text]').keyup(function(){
+			sousuo();
+		});
+		$(function(){
+		});
+	</script>
+</body>
+</html>

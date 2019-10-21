@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>then</title>
+	<script>
+		//基于异步函数的请求封装
+		function get_callback(url,successHandler,errorHandler){
+			// 实例化
+			let xhr = new XMLHttpRequest();
+			// 设置请求行
+			xhr.open("get",url);
+			// 设置头信息
+			xhr.responseType = "json";//调用接口返回的值一定要为json类型
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			// 设置体信息
+			xhr.send();
+			// 设置监听
+			xhr.onreadystatechange = function(){
+				// 就绪状态(客户端向浏览器发送请求)
+				if(this.readyState === 4){
+					// 请求整体状态ok
+					if(this.status === 200){
+						// 响应信息
+						successHandler(this.response);//这个函数是传入的函数，
+					}else{
+						errorHandler(this)
+					}
+				}
+
+			}
+		}
+
+		let url = "http://39.105.108.131:6677/product/findAll";
+		get_callback(url,function(result){
+			console.log("success1",result);
+		},function(){
+			alert("请求异常1");
+		});
+
+		//基于promise的异步操作封装
+		function get_promide(url){
+			//将异步操作封装到承诺对象中
+			return new Promise((resolve,reject)=>{
+				let xhr = new XMLHttpRequest();
+				xhr.open("GET",url);
+				xhr.responseType = "json";
+				xhr.setRequestHeader( "Content-Type","application/x-www-form-urlencoded");
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(this.readyState === 4){
+						// 请求整体状态ok
+						if(this.status === 200){
+							// 承诺成功
+							resolve(this.response);
+						}else{
+							//承诺失败
+							reject(this)
+						}
+					}
+				}
+			});
+		}
+		//第一种1写法
+		// get_promide(url).then(()=>{
+		// 	console.log("p请求成功");
+		// },()=>{
+		// 	console.log("p请求异常");
+		// });
+		//第二种写法,经典链式函数，jquery常见
+		get_promide(url).then((result)=>{
+			//console.log(a); //语法错误也抛出请求异常,实际上请求已经成功，但请求回来的数据转换出错
+			console.log("请求成功2",result);
+			return result;
+		})
+		//多个then可有可无
+		.then((result)=>{
+			console.log(result);
+		})
+		.catch(()=>{
+			alert("请求异常2");
+		})
+		.finally(()=>{
+			alert("请求结束");
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

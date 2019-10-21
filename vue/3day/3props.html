@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父组件向子组件传递</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 组件调用 -->
+		<my-test :a="1" :b="true" :d="[1,2]" c="cc" :e="()=>{}"></my-test>
+	</div>
+	<script>
+		//组件的定义并且进行全局注册
+		Vue.component("my-test",{
+			template:`
+				<div>
+					<p>a:{{typeof a}},{{a}}</p>
+					<p>b:{{typeof b}},{{b}}</p>
+					<p>c:{{typeof c}},{{c}}</p>
+					<p>d:{{typeof d}},{{d}}</p>
+					<p>e:{{typeof e}},{{e}}</p>
+					<p>f:{{typeof f}},{{f}}</p>
+				</div>
+			`,
+			// props:["a","b"]
+			//类型校验
+			props:{
+				a:Number,
+				b:Boolean,
+				c:String,
+				d:{
+					type:Array,
+					required:true
+				},
+				e:Function,
+				//对象要有唯一值
+				f:{
+					type:Object,
+					default(){
+						return {name:"is null"};
+					}
+				}
+			}
+		})
+
+		new Vue({
+			el:"#app"
+		})
+
+	</script>
+</body>
+</html>

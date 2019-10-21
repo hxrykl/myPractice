@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘事件</title>
+</head>
+<body>
+	搜索<input type="search" placeholder="请输入关键字"/>
+	
+	<script>
+		var input_search = document.querySelector("input[type=search]");
+		input_search.onkeyup = function(event){
+			//alert(1);
+			//按键值设定回车
+			if(event.keyCode == 13){
+				alert(this.value);
+			}
+		}
+	</script>
+</body>
+</html>

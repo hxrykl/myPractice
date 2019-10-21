@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伸缩盒子</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1328631_t4bo8pqozhp.css">
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		.container{
+			background-color: #cdcdcd;
+			max-width: 500px;
+			max-height: 700px;
+			margin: 0 auto;
+			overflow:hidden;
+			
+			position: relative;
+		}
+		.top{
+			position: fixed;
+			top: 0;
+			overflow-x:hidden;
+			display: flex;
+			flex-direction: column;
+			background-color: pink;
+			height: 100px;
+			max-width: 500px;
+			background-color: #fafafa;
+
+		}
+		.search{
+			flex: 1;
+			display: flex;
+
+		}
+		.search > div{
+			
+			float: left;
+			padding: 0 10px;
+		}
+		.search > div+*{
+			padding: 10px 0;
+			flex: 1;
+		}
+		.search > div+* >div{
+			line-height: 1.6em;
+			width:100%;
+			background-color: #ebebec;
+			height: 30px;
+		}
+		.search > div+*  input{
+			height: 30px;
+			border: none;
+			background-color: #ebebec;
+		}
+		.write{
+			width: 45px;
+			height: 90px;
+			background-color: #fafafa;
+			position: absolute;
+			top: 0;
+			right: 0;
+			text-align: center;
+			
+		}
+		.write > div{
+			padding: 7px 0;
+		}
+		.write .iconfont{
+			font-size: 25px;
+			
+		}
+		.menu{
+			flex: 1;
+
+		}
+		.menu > ul{
+			display: flex;
+			flex-direction: row;
+			text-align: center;
+
+		}
+		.menu > ul > li{
+			min-width: 60px;
+			flex: 1;
+		}
+		.content{
+			background-color: pink;
+			height: 600px;
+			margin-top: 100px;
+			overflow-y: scroll;
+			width:517px; 
+		}
+		.content > ul >li{
+			height: 300px;
+
+			background-color: #cdcdcd;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="top">
+			<div class="search">
+				<div>
+					<img src="yximages/wblogo.png" alt="">
+				</div>
+				<div>
+					<div>
+					<i class="iconfont iconweibiaoti524"></i>
+					<input type="text" placeholder="大家都在搜">
+					</div>
+				</div>
+			</div>
+			<div class="write">
+				<div>
+					<i class="iconfont iconxie"></i>
+				</div>
+				<div>
+					<i class="iconfont iconweibiaoti540"></i>
+				</div>	
+			</div>
+			<div class="menu">
+				<ul>
+					<li>热门</li>
+					<li>新鲜事</li>
+					<li>同城</li>
+					<li>搞笑</li>
+					<li>情感</li>
+					<li>明星</li>
+					<li>电影</li>
+					<li>数码</li>
+					<li>游戏</li>
+					<li>社会</li>
+					<li>体育</li>
+					<li>汽车</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<ul>
+				<li>
+					<div>1</div>
+					<div>1</div>
+					<div>1</div>
+				</li>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+			</ul>
+		</div>
+		<div class="bottom"></div>
+	</div>
+</body>
+</html>

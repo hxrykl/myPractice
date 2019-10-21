@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步操作的同步化</title>
+	<script>
+		//基于promise的异步操作封装
+		let $ =	{ 
+			get(url){
+				//将异步操作封装到承诺对象中
+				return new Promise((resolve,reject)=>{
+					let xhr = new XMLHttpRequest();
+					xhr.open("GET",url);
+					xhr.responseType = "json";
+					xhr.setRequestHeader( "Content-Type","application/x-www-form-urlencoded");
+					xhr.send();
+					xhr.onreadystatechange = function(){
+						if(this.readyState === 4){
+							// 请求整体状态ok
+							if(this.status === 200){
+								// 承诺成功
+								resolve(this.response);
+							}else{
+								//承诺失败
+								reject(this)
+							}
+						}
+					}
+				});
+			}
+		}
+		//这个方法不行
+		// $.get("http://39.105.108.131:6677/order/findAll")
+		// .then((a)=>{
+		// 	console.log("成功1",a);
+		// })
+		// .catch((b)=>{
+		// 	console.log("失败1",b);
+		// })
+		// $.get("http://39.105.108.131:6677/product/findAll")
+		// .then((a)=>{
+		// 	console.log("成功",a);
+		// })
+		// .catch((b)=>{
+		// 	console.log("失败",b);
+		// })
+
+		//这样的方法可以保证同步，
+		function* foo(){
+			let pro =	yield call($.get,"http://39.105.108.131:6677/product/findAll");
+			console.log("pro",pro);
+
+			let order =	yield call($.get,"http://39.105.108.131:6677/order/findAll");
+			console.log("order",order);
+		}
+
+		function call(handler,params){
+			handler(params)
+			.then((response)=>{
+				//这个参数作为上一个yield表达式的返回值
+				iterator.next(response);
+				iterator2.next(response);
+			})
+
+		}
+
+		 let iterator = foo();
+		// //只执行一次就可以
+		 iterator.next();
+		
+		
+		 //层次获取数据
+		function* bar(){
+			let customers = yield call($.get,"http://39.105.108.131:6677/customer/findAll");
+			console.log("所有顾客信息",customers);
+
+			let id = customers.data[0].id;
+			console.log(id);
+			let address = yield call($.get,"http://39.105.108.131:6677/address/findByCustomerId?id="+id);
+			console.log("顾客地址信息",address);
+		}
+		let iterator2 =bar();
+		iterator2.next();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

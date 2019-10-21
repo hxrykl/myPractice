@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>顾客管理</title>
+    <!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <!-- axios -->
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>
+    <!-- 模板 -->
+    <div id="customer">
+        <h2>{{name}}</h2>
+        {{customer}}
+        <form class="form-inline" action="" v-on:submit.prevent="submitHandler">
+            <div class="form-group">
+                <label for="">姓名</label>
+                <input class="form-control" type="text" v-model="customer.realname">
+            </div>
+            <div class="form-group">
+                <label for="">手机</label>
+                <input class="form-control" type="text" v-model="customer.telephone">
+            </div>
+            <input class="btn btn-primary" type="submit" value="提交">
+        </form>
+        <!-- 表格 -->
+        <el-table :data="customers">
+        	<el-table-column prop="id" lable="编号"></el-table-column>
+        	<el-table-column prop="realname" lable="姓名"></el-table-column>
+        	<el-table-column prop="telephone" lable="手机"></el-table-column>
+        	<el-table-column lable="操作"></el-table-column>
+        </el-table>	
+    </div>
+    <!-- vue对象 -->
+    <script>
+    axios.defaults.headers.common["Content-Type"] = "application/x-www-form-urlencoded";
+    axios.defaults.transformRequest = [(data) => {
+        let str = "";
+        for (let key in data) {
+            let val = data[key];
+            str += (key + "=" + val + "&");
+        }
+        return str.slice(0, str.length - 1);
+    }]
+    new Vue({
+        el: "#customer",
+        data: {
+            name: "顾客管理",
+            customers: [],
+            customer: {}
+        },
+        methods: {
+            saveHandler(customer) {
+                this.customer = customer;
+            },
+            //保存数据操作
+            async submitHandler() {
+                let response = await axios.post("http://39.105.108.131:6677/customer/saveOrUpdate", this.customer);
+                alert(response.data.message);
+                this.customer = {};
+                this.reloadData();
+            },
+            //重载数据
+            reloadData() {
+                axios.get("http://39.105.108.131:6677/customer/findAll")
+                    .then((response) => {
+                        //将返回结果赋值给customers
+                        this.customers = response.data.data;
+                    })
+            },
+            // Genertor函数语法糖 删除数据操作
+            async deleteHandler(id) {
+                let response = await axios.get("http://39.105.108.131:6677/customer/deleteById", { params: { id } });
+                alert(response.data.message);
+                this.reloadData()
+            }
+        },
+        //在这个阶段可以通过this访问message
+        created() {
+            this.reloadData();
+        }
+    })
+    </script>
+</body>
+
+</html>

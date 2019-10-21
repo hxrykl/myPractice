@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom</title>
+</head>
+<!--hahah-->
+<body>
+	<div></div>
+	<div id="one">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<script>
+		var body = document.body;
+		var div = document.div;
+
+		console.log(body.constructor);
+
+		console.log(document.nodeType);
+
+		console.log(body.nodeType);
+
+		if (document.nodeType === Node.DOCUMENT_NODE) {
+			//alert("a");
+		}
+
+		//document节点名
+		//alert(document.nodeName);
+		//body节点名
+		//alert(body.nodeName);
+
+		//body节点值
+		//alert(body.nodeValue);
+
+		//body所有的子节点
+   		console.log(body.childNodes);
+
+   		
+   		//body第一个子节点类型
+
+   		console.log(body.childNodes[0].nodeType);
+   		//body第一个子节点名
+   		console.log(body.childNodes[0].nodeName);
+   		//body第一个子节点值
+   		console.log(body.childNodes[0].nodeValue);
+   		//body第一个子节点名
+   		console.log("第一个子节点"+body.firstChild.nodeName);
+
+   		console.log("下一个兄弟",body.childNodes[0].nextSibling);
+   		console.log("上一个兄弟"+body.previousSibling.nodeName);
+   		console.log(body.childNodes);
+   		
+	</script>
+</body>
+
+</html>

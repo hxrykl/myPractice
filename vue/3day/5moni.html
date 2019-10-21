@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟事件</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		total:{{total}}
+		<my-test @foo="changeTotal"></my-test>
+		<my-test @foo="changeTotal"></my-test>
+		<my-test @foo="changeTotal"></my-test>
+	</div>
+	<script>
+		Vue.component("my-test",{
+			template:`
+				<div>
+					<p>
+						count:{{count}}
+						<button @click="changeCount">增加</button>
+					</p>
+					
+				</div>
+			`,
+			//每一个组件的data值唯一
+			data(){
+				return {
+					count:0
+				}
+			},
+			methods:{
+				changeCount(){
+					this.count++;
+					//通知父组件
+					this.$emit("foo")
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				total:0
+			},
+			methods:{
+				changeTotal(){
+					this.total++;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

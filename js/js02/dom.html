@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom基础</title>
+</head>
+<body>
+	<div id="one">
+		<ul>
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ul>
+	</div>
+
+	<script>
+		
+		console.log(document);
+		//HTMLDocument,document是HTMLDocument的一个实例对象
+		
+		console.log(document.constructor);
+		console.log(document instanceof HTMLDocument);
+		console.log(document instanceof Document);
+		console.log(document instanceof Node);
+		console.log(document instanceof Object);
+		console.log(document instanceof Element);
+		console.log(HTMLDocument.prototype instanceof Document);
+		console.log(Document.prototype instanceof HTMLDocument);
+		console.log(document.children);//Document.prototype
+		console.log(document.childNodes);//Node.prototype
+
+		var one = document.getElementById("one");
+		console.log(one);
+		console.log(one instanceof Node);
+		console.log(one instanceof Element);
+		console.log(one instanceof HTMLElement);
+		console.log(one instanceof HTMLDivElement);
+		console.log(one.childNodes);//Node.prototype
+		console.log(one.children);//Element.prototype
+
+
+	</script>
+</body>
+</html>

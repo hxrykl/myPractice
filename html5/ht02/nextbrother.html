@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下一个兄弟</title>
+	<style>
+		.one>div.a+div{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+	    <p>1</p>
+		<div>2</div>
+		<div>3</div>
+		<div class="a">4</div>
+		
+		<div class="one">5
+           	<div class="one">55</div>
+			<div>56</div>
+		</div>
+		<p class="one">11</p>
+		<div>6</div>
+		<div>7</div>
+	</div>
+	<div>8
+		<div>88</div>
+		<div>89</div>
+	</div>
+</body>
+</html>

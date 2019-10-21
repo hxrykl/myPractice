@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒子选择</title>
+	<style>
+		.bb{
+			background: red;
+		}
+		.cc{
+			background: green;
+		}
+		.aa{
+			background: yellow;
+		}
+		
+		
+		.big>div.bb,div.cc,div.aa{
+			display: none;
+			width: 100px;
+			height: 100px;
+			float: left;
+		}
+		
+		div.one:hover~.bb{
+			display: block;
+			color: red;
+			
+		}
+		div:nth-child(2):hover~.cc{
+			display: block;
+		}
+		div:nth-child(3):hover~div:nth-child(6){
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="big">
+		<div class="one">红</div>
+		<div>绿</div>
+		<div>黄</div>
+		<div class="bb"></div>
+		<div class="cc"></div>
+		<div class="aa"></div>
+	</div>
+</body>
+</html>

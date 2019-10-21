@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for循环，while循环，do-while循环</title>
+
+	<script>
+	/*for1*/
+	document.write("for循环<br/>");
+	for(var  x =1;x<=9;x++){
+		for(var y=1;y<=x;y++){
+			var r = x*y;
+			document.write(y+"x"+x+"="+r+(r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+		}
+		document.write("<br/>");
+	}
+
+	/*for2*/
+	document.write("<br/>");
+	for(var  x =9;1<=x;x--){
+		for(var y=1;y<=x;y++){
+			var r = x*y;
+			document.write(y+"x"+x+"="+r+(r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+		}
+		document.write("<br/>");
+	}
+
+	/*for3*/
+	document.write("<br/>");
+	document.write("<div style='text-align:right;'>");
+	for(var  x =1;x<=9;x++){
+		for(var y=1;y<=x;y++){
+			var r = x*y;
+			document.write((r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+y+"x"+x+"="+r);
+		}
+		document.write("<br/>");
+	}
+	document.write("</div>");
+
+	/*for4*/
+	document.write("<br/>");
+	document.write("<div style='text-align:right;'>");
+	for(var  x =9;1<=x;x--){
+		for(var y=1;y<=x;y++){
+			var r = x*y;
+			document.write((r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+y+"x"+x+"="+r);
+		}
+		document.write("<br/>");
+	}
+	document.write("</div>");
+
+
+	/*while1*/
+	document.write("<br/>");
+	document.write("while循环<br/>");
+	var x=1;
+	while(x<=9){
+		var y=1;
+		while(y<=x){
+			var r =x*y;
+			document.write(y+"x"+x+"="+r+(r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+			y++;
+		}
+		x++;
+		document.write("<br/>");
+	}
+
+
+	/*while2*/
+	document.write("<br/>");
+	var n=9;
+	while(1<=n){
+		var m=1;
+		while(m<=n){
+			var l =m*n;
+			document.write(m+"x"+n+"="+l+(l<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+			m++;
+		}
+		n--;
+		document.write("<br/>");
+	}
+
+
+	/*while3*/
+	document.write("<br/>");
+	document.write("<div style='text-align:right;'>");
+	var x=1;
+	while(x<=9){
+		var y=1;
+		while(y<=x){
+			var r =x*y;
+			document.write((r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+y+"x"+x+"="+r);
+			y++;
+		}
+		x++;
+		document.write("<br/>");
+	}
+	document.write("</div>");
+
+
+	/*while4*/
+	document.write("<br/>");
+    document.write("<div style='text-align:right;'>");
+    var n=9;
+	while(1<=n){
+		var m=1;
+		while(m<=n){
+			var l =m*n;
+			document.write((l<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+m+"x"+n+"="+l);
+			m++;
+		}
+		n--;
+		document.write("<br/>");
+	}
+    document.write("</div>");
+
+
+    /*do-while 1*/
+	document.write("<br/>");
+	document.write("do-while循环<br/>");
+    var x=1;
+    do{
+    	var y=1;
+    	do{
+    		var r =x*y;
+    		document.write(y+"x"+x+"="+r+(r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+    		y++;
+    	}
+    	while(y<=x);
+    	x++;
+    	document.write("<br/>");
+    }
+    while(x<=9);
+
+
+    /*do-while 2*/
+    document.write("<br/>");
+    var x=9;
+    do{
+    	var y=1;
+    	do{
+    		var r =x*y;
+    		document.write(y+"x"+x+"="+r+(r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;"));
+    		y++;
+    	}
+    	while(y<=x);
+    	x--;
+    	document.write("<br/>");
+    }
+    while(1<=x);
+
+
+    /*do-while 3*/
+    document.write("<br/>");
+    document.write("<div style='text-align:right;'>");
+    var x=1;
+    do{
+    	var y=1;
+    	do{
+    		var r =x*y;
+    		document.write((r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+y+"x"+x+"="+r);
+    		y++;
+    	}
+    	while(y<=x);
+    	x++;
+    	document.write("<br/>");
+    }
+    while(x<=9);
+    document.write("</div>");
+
+
+    /*do-while 4*/
+    document.write("<br/>");
+    document.write("<div style='text-align:right;'>");
+     var x=9;
+    do{
+    	var y=1;
+    	do{
+    		var r =x*y;
+    		document.write((r<10?"&nbsp;&nbsp;&nbsp;":"&nbsp;")+y+"x"+x+"="+r);
+    		y++;
+    	}
+    	while(y<=x);
+    	x--;
+    	document.write("<br/>");
+    }
+    while(1<=x);
+    document.write("</div>");
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

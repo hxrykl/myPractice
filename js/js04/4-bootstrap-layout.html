@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <!-- jquery要放在bootstrap前面 -->
+     <script src="../jquery/jquery-3.4.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+   
+    
+
+    <title>layout</title>
+    <style>
+      .height{
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row align-items-end">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+        <div class="col-2 bg-danger">444</div>
+        <div class="col-2 bg-success">555</div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-sm-3  bg-info py-3">1</div>
+        <div class="col-lg-6 col-sm-3  bg-danger py-3">2</div>
+        <div class="col-lg-6 col-sm-3  bg-success py-3">3</div>
+        <div class="col-lg-6 col-sm-3  bg-info py-3">4</div>
+        <div class="col bg-danger ">5</div>
+        <div class="col bg-success ">6</div>
+        <div class="col bg-info">7</div>
+        <div class="col bg-danger">8</div>
+        <div class="col bg-success">9</div>
+        <div class="col bg-info">10</div>
+        <div class="col bg-danger">11</div>
+        <div class="col bg-success">12</div>
+        <div class="col bg-info">13</div>
+        <div class="col bg-danger">14</div>
+        <div class="col bg-success">15</div>
+      </div>
+      <!-- 伸缩盒元素纵向排列 -->
+      <div>伸缩盒纵向排列</div>
+       <div class="row align-items-start height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+      <div class="row align-items-center height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+       <div class="row align-items-end height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+      <!-- 伸缩盒纵向排列2 -->
+      <div>伸缩盒纵向排列2</div>
+      <div class="row  height bg-success">
+        <div class="col-1  bg-warning align-self-start">111</div>
+        <div class="col-2 bg-dark align-self-center">222</div>
+        <div class="col-3 bg-info align-self-end">333</div>
+         <div class="col-1  bg-warning align-self-start">111</div>
+      </div>
+      <!-- 伸缩盒纵向排列3 -->
+      <div>伸缩盒纵向排列3</div>
+      <div class="row align-content-start height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+      <div class="row align-content-center height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+       <div class="row align-content-end height bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-2 bg-dark">222</div>
+        <div class="col-3 bg-info">333</div>
+      </div>
+      <!-- 伸缩盒横向排列2 -->
+      <div>伸缩盒横向排列2</div>
+      <div class="row   justify-content-start bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-1 bg-dark">222</div>
+        <div class="col-1 bg-info">333</div>
+      </div>
+       <div class="row  justify-content-center bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-1 bg-dark">222</div>
+        <div class="col-1 bg-info">333</div>
+      </div>
+      <div class="row justify-content-end bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-1 bg-dark">222</div>
+        <div class="col-1 bg-info">333</div>
+      </div>
+      <div class="row justify-content-around bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-1 bg-dark">222</div>
+        <div class="col-1 bg-info">333</div>
+      </div>
+      <div class="row justify-content-between bg-success">
+        <div class="col-1  bg-warning">111</div>
+        <div class="col-1 bg-dark">222</div>
+        <div class="col-1 bg-info">333</div>
+      </div>
+      <!-- 排序 -->
+      <div>排序</div>
+      <div class="row ">
+        <div class="col-sm-1  bg-warning order-5">111</div>
+        <div class="col-sm-2 bg-dark order-4">222</div>
+        <div class="col-sm-3 bg-info order-3">333</div>
+        <div class="col-sm-2 bg-danger order-2">444</div>
+        <div class="col-sm-2 bg-success order-1">555</div>
+      </div>
+      <!-- 偏移 -->
+      <div>偏移</div>
+       <div class="row ">
+        <div class="col-sm-1  bg-warning offset-1">111</div>
+        <div class="col-sm-2 bg-dark offset-2">222</div>
+        <div class="col-sm-3 bg-info offset-1">333</div>
+      </div>
+      <!-- 自动外边距 -->
+      <div>自动外边距</div>
+      <div class="row ">
+        <div class="col-sm-1  bg-warning mr-auto">111</div>
+        <div class="col-sm-2 bg-dark ml-auto">222</div>
+        <div class="col-sm-3 bg-info ml-auto">333</div>
+      </div>
+    </div>
+  </body>
+</html>

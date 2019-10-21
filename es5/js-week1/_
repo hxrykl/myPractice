@@ -1,0 +1,31 @@
+Array.prototype.myunshift = function(){
+    arr1 = [];
+    arr2 =[];
+    var l =this.length;
+    var le=arguments.length;
+    for(var i=0;i<l;i++){
+        arr[i]=this[i];
+    }
+    console.log(arr);
+    for(var key in arguments){
+        var a=+key;
+        //console.log(a);
+        this[a]=arguments[key];
+    }
+
+    console.log(arr);
+    for(var n=0;n<l;n++){
+        this[n+le]=arr[n];
+    }
+    return le;
+
+}
+
+arr =[1,3,5,7];
+var re =arr.myunshift(2,4,6);
+console.log(re,arr);
+
+
+arr1 =[1,3,5,7];
+var re1 =arr1.unshift(2,4,6);
+console.log(re1,arr1);

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>node方法</title>
+	<style>
+		#one{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="one">
+		<div>1</div>
+		<div>2</div>
+		<p>3</p>
+		<h1>4</h1>
+	</div>
+	<div id="two">5</div>
+
+	<script>
+		var one = document.body.children[0];
+		var two = document.body.children[1];
+
+		console.log(one,two);
+
+		//追加节点two到one子后面
+		//one.appendChild(two);
+
+		//克隆two节点到one子后面
+		//one.appendChild(two.cloneNode(true));
+
+		
+		var two_copy = two.cloneNode(true);
+		//给克隆的节点属性重命名·
+		two_copy.id = 'tw_copy';
+		//one.appendChild(two_copy);
+
+		//在one的第三个子节点后插入克隆的节点two_copy
+		//one.insertBefore(two_copy,one.children[2]);
+
+		//克隆的节点two_copy替换one的第三个子节点
+		//one.replaceChild(two_copy,one.children[2]);
+
+		//移除one的第三个子节点
+		one.removeChild(one.children[2]);
+	</script>
+</body>
+</html>

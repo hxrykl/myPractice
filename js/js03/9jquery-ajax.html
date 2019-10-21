@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery中的ajax</title>
+	<script src="../jquery/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<script>
+		 $(function(){
+		 	
+
+			//地址管理接口：根据id查找地址信息
+			/*var url ="http://134.175.154.93:6677/address/findByCategoryId";
+			var obj = {id:303};
+			$.get(url,obj,function(data,textStatus){//拿回调函数success
+				console.log("data",data,"text",textStatus);
+			})*/
+
+			//地址管理接口：增加地址
+			var url ="http://134.175.154.93:6677/address/insertAddress";
+			//content-type,没有定义时jQuery默认application/x-www-form-urlencoded
+			// querystring参数转码
+			var data = {
+				province:"海南省",
+				city:"洋浦经济开发区",
+				area:"三都镇",
+				address:"奥运路",
+				telephone:"1234125674" 
+			}
+
+			$.post(url,data,function(response,status){
+				console.log(response,status);
+			});
+
+			//地址管理接口：查询地址信息
+			/*var url = "http://134.175.154.93:6677/address/findAddressAll";
+
+			$.get(url,function(data,textStatus){
+				console.log(data,textStatus);
+			})*/
+
+		 })
+
+		
+			
+	</script>
+</body>
+</html>

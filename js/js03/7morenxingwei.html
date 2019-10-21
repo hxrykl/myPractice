@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>默认行为</title>
+</head>
+<body>
+	<a href="">百度一下</a>
+	<a href="javascript:void(0);">百度一下</a>
+
+
+	<script>
+		var links = document.querySelectorAll("a");
+		console.log(links);
+		Array.prototype.slice.call(links,0).forEach(function(item){
+			item.onclick = function(event){
+				alert(1);
+				event.preventDefault();
+				//return false;
+			}
+
+		})
+	</script>
+</body>
+</html>

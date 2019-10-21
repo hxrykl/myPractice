@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件定义</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{message}}
+		<wwl-alert title="hello world" type="success"></wwl-alert>
+		<wwl-alert :title="message" type="warning"></wwl-alert>
+	</div>
+	<div id="test">
+		<wwl-alert :title="'hello test'" type="success"></wwl-alert>
+	</div>
+	<script>
+		//组件定义config
+		let wwlAlert = {
+			template:`
+				<div :style="style.basic,type === 'warning'?style.warning:style.success">
+					<span>{{title}}</span>
+				</div>
+			`,
+			props:["title","type"],//期望从父组件中获取到的参数
+			data(){
+				return {
+					// title:"警告信息！",
+					style:{
+						basic:{
+							"padding":".5em 1em",
+							"border":"1px solid pink",
+							"border-radius":"5px",
+							"margin-bottom":"10px",
+							"color":"pink"
+						},
+						warning:{
+							"border-color":"pink",
+							"color":"pink"
+						},
+						success:{
+							"border-color":"lightblue",
+							"color":"lightblue"
+						}
+					}
+				}
+			}
+		}
+		//全局组件注册
+		//Vue.component("wwl-alert",wwlAlert)
+		//根组件1
+		new Vue({
+			el:"#app",
+			data:{
+				message:"this is root vue"
+			},
+			//局部组件注册
+			components:{
+				"wwl-alert":wwlAlert
+			}
+		})
+		//根组件2
+		new Vue({
+			el:"#test",
+			data:{
+				
+			},
+			//局部组件注册
+			components:{
+				"wwl-alert":wwlAlert
+			}
+		})
+	</script>
+</body>
+</html>

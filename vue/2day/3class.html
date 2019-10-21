@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class,样式</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+	<style>
+		body,ul{
+			margin:0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		ul.menu{
+			width: 200px;
+			background-color: #666;
+			text-align: center;
+		}
+		ul.menu >li.basic{
+			height: 2em;
+			line-height: 2em;
+			color:#efefef;
+			border-bottom: 1px solid #efefef;
+		}
+		ul.menu > li.current{
+			background-color: #efefef;
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+	<div id="a">
+		<ul class="menu">
+			<!-- class的动态值为表达式 -->
+			<!-- <li :class="item.id === currentTab? 'basic current':'basic'" 
+			v-for="item in list" 
+			:key="item.id"
+			@click = "changeTab(item.id)">
+				{{item.name}}
+			</li> -->
+			<!-- class的动态值为对象 -->
+			<!-- <li :class="{basic:true,current:item.id === currentTab}" 
+			v-for="item in list" 
+			:key="item.id"
+			@click = "changeTab(item.id)">
+				{{item.name}}
+			</li> -->
+			<!-- class的动态值为数组 -->
+			<!-- <li :class="['basic',item.id === currentTab?'current':'']" 
+			v-for="item in list" 
+			:key="item.id"
+			@click = "changeTab(item.id)">
+				{{item.name}}
+			</li> -->
+			<!-- class动态值为数组,s数组里可以放方法 -->
+			<li :class="['basic',foo(item.id)]" 
+			v-for="item in list" 
+			:key="item.id"
+			@click = "changeTab(item.id)">
+				{{item.name}}
+			</li>
+		</ul>
+			{{currentTab}}
+		<div style="background:pink; color: #fff;">1111111</div>
+		<div :style="{background:'pink',color:'#fff'}">2222222</div>
+		<div :style="[{background:'pink'},aaa]">3333333</div>
+	</div>
+
+	<script>
+		new Vue({
+			el:"#a",
+			data:{
+				aaa:{color:'#fff'},
+				currentTab:1,
+				list:[
+					{id:1,name:"顾客管理"},
+					{id:2,name:"栏目管理"},
+					{id:3,name:"产品管理"},
+					{id:4,name:"订单管理"}
+				]
+			},
+			methods:{
+				changeTab(id){
+					this.currentTab = id;
+				},
+				foo(id){
+					return id===this.currentTab?'current':'';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

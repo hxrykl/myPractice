@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件对象</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+
+</head>
+<body>
+	<div id="app">
+		<!-- 如果传参就拿到参数，没有传参就拿到dom对象 -->
+		<button @click="handler">点击</button>
+		<button @click="handler2(2)">点击</button>
+		<!-- $event特指dom对象,这里的aaa不加单引号会被识别成变量 -->
+		<button @click="handler3(3,$event,'aaa',aa)">点击</button>
+		<input type="search" placeholder="搜索" v-model="keywords" @keypress.enter="searchHandler"> 
+		
+	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				aa:"hello",
+				keywords:""
+			},
+			methods:{
+				searchHandler(){
+					alert(this.keywords);
+				},
+				handler3(a,event,c,d){
+					console.log(a,event,c,d);
+				},
+				handler2(event){
+					console.log(event);
+				},
+				handler(event){
+					console.log(event);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

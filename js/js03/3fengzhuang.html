@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态表格</title>
+	<style>
+
+		.btn{
+			display: inline-block;
+			padding: 0.5em 1em;
+			border-radius: 3px;
+			background-color: blue;
+			color: #fff;
+			cursor: pointer;
+			margin-bottom: 20px;
+		}
+		table.table{
+			width: 100%;
+			border-collapse: collapse;
+			box-sizing: border-box;
+		}
+		table.table td,
+		table.table th{
+			border: 1px solid #ccc;
+			line-height: 2em;
+			text-align: center;
+			height: 70px;
+		}
+		table.table tr.current{
+			background-color: #ccc;
+		}
+		.none{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn" id="btn_add">添加</div>
+	<div class="btn">批量导入</div>
+	<div class="btn">批量删除</div>
+	<div class="forms">
+		<form action="javascript:void(0)">
+			<input type="hidden" name="id"/>
+			<table>
+				<tbody>
+					<tr>
+						<td>姓名</td>
+						<td><input type="text" name="realname"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>手机号</td>
+						<td><input type="text" name="telephone"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" value="保存">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<table class="table">
+		<thead>
+			<th>编号</th>
+			<th width="200px">姓名</th>
+			<th>头像</th>
+			<th>手机</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<tr class="none">
+				<td> 
+					<input type="checkbox">
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<!-- 取消a标签点击反应事件 -->
+					<a class="btn_del" href="javascript:void(0)">删除</a>
+					<a class="btn_change" href="javascript:void(0)">修改</a>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="./fengzhuang.js">
+	</script>
+</body>
+</html>

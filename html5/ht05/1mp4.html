@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音频</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="btn">
+		<h3 id="gqname">
+			<span>歌曲</span>
+		</h3>
+		<audio id="audio"  controls="controls" loop autoplay="true">
+			<!-- 多种格式文件 -->
+			<source src="./yinpin/yourname.mp3" type="audio/mpeg">
+			<source src="./yinpin/yourname.ogg" type="audio/ogg">
+		</audio>	
+		<input  type="button" onclick="next()" value="下">
+		<script>
+			//获取音频节点
+			var Myaudie = document.getElementById("audio");
+			//获取歌曲名字h3节点
+			//var gqname = document.getElementById("gqname");
+			//删除歌曲名字span节点
+			// document.getElementById("gqname").removeChild(gqname.firstElementChild);
+			//新建span元素
+			//var span = document.createElement("span");
+			//添加新的span节点
+			//gqname.appendChild(span);
+			//定义歌曲地址数组
+			var data = ['./yinpin/yourname.mp3','./yinpin/yourname2.mp3','./yinpin/yourname3.mp3'];
+			
+			
+			
+			var index = 0;
+			function next(){
+				//var gqspan = document.querySelectorAll('span');
+				index++;
+				if(index>=data.length){
+					index=0;
+				}
+				var getdata = data[index];
+				//修改歌曲地址
+				Myaudie.src = getdata;
+				
+				//var text = new Text(gqnameArr[index]);
+				//添加歌曲名字
+				//gqspan.innerText()=text;
+				
+
+			}
+			$(function(){
+				//定义歌曲名字数组
+				
+				$("#btn").on("click","input",function(){
+					var gqnameArr = ['RADWIMPS - 前前前世','RADWIMPS - なんでもないや','RADWIMPS - スパークル'];
+					var index1 =0;
+					index1++;
+					var gqname1 = gqnameArr[index];
+					//将歌名放入span
+					$('h3 span').text(gqname1);
+				});
+			});
+			
+		</script>
+	</div>
+
+	<div>
+		<h3>魔女嘉利</h3>
+		<video src="./yinpin/monv.mp4" controls="controls" autoplay="autoplay"></video>
+	</div>
+	
+	
+</body>
+</html>

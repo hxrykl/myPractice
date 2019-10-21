@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>魔种下凡</title>
+	<style>
+		body{
+			margin: 0;
+		}
+		li,ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.first>li{
+			float: left;
+			text-align: center;
+			width: 100px;
+			position: relative;
+		}
+	    .one{
+	    	background: #000;
+	    	color: #fff;
+	    }
+	    .one>ul>li>ul{
+	    	color:#fff;
+	    	display: none;
+	    	position: absolute;
+	    }
+	    .first::after{
+	    	clear: both;
+	    	display: block;
+	    	content: "";
+	    }
+	    .one>ul>li:hover>ul{
+	    	background: #000;
+	    	display: block;
+	    	width: 100px;
+	    	text-align:center;
+	    }
+	</style>
+</head>
+<body>
+<div>
+	<div class="one">
+	    <!-- 第一个 -->
+		<ul class="first">
+			<li>我
+                <ul>
+                	<li>命</li>
+                	<li>由</li>
+                	<li>我</li>
+                </ul>
+			</li>
+			<li>不
+               <ul>
+               	<li>由</li>
+               	<li>天</li>
+               	<li>。</li>
+               </ul>
+			</li>
+			<li>！！
+                <ul>
+                	<li>魔</li>
+                	<li>孩</li>
+                	<li>儿</li>
+                </ul>
+			</li>
+		</ul>
+		<!-- 第一个结束 -->
+	</div>
+</div>
+	
+</body>
+</html>

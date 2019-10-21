@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>su</title>
+	<style>
+		.container{
+			height: 100px;
+			width: 200px;
+			overflow: hidden;/*将超出的部分先隐藏*/
+		}
+		.con{
+			height: 100%;
+			width: 600px;
+			animation-name:lunbo;/*动画名称*/
+			animation-duration:12s;/*持续时间*/
+			animation-direction:normal;/*运动方向*/
+			animation-iteration-count:infinite;/*执行次数*/
+			animation-timing-function:ease-in-out;/*执行时间曲线*/
+		}
+		.con > div{
+			float: left;
+			width: 200px;
+			height: 100%;
+			background-color: pink;
+		}
+		@-webkit-keyframes lunbo{
+			0%,25%{
+				margin-left: 0px;
+			}
+			
+			40%,60%{
+				margin-left:-200px;
+			}
+			
+			75%,100%{
+				margin-left:-400px;
+			}
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="con">
+			<div>第一个图片</div>
+			<div>第二个图片</div>
+			<div>第三个图片</div>
+		</div>
+	</div>
+</body>
+</html>

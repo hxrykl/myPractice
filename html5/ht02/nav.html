@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		list-style: none;
+	}
+	.nav{
+		height: 100px;
+		background-color: #333;
+		color: #ededed;
+		line-height: 100px;
+	}
+	.nav ul li{
+		float: left;
+		width: 150px;
+		text-align: center;
+		font-size: 30px;
+	}
+	.nav ul li:hover{
+		background-color: #ededed;
+		color: #333;
+	}
+	.nav ul li ul{
+		display: none;
+	}
+	.nav ul li:hover > ul{
+		display: block;
+	}
+	.nav ul li ul li:hover{
+		background-color: #333;
+		color: #ededed;
+	}
+</style>
+<body>
+	<div class="nav">
+		<ul>
+			<li>
+				<p>one</p>
+			</li>
+			<li>
+				<p>two</p>
+			</li>
+			<li>
+				<p>three</p>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

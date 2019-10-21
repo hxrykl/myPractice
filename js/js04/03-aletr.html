@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试alert</title>
+	<script type="text/javascript" src="../jquery/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<!-- <button onclick="javascript:alert(this is test1);">测试1</button> -->
+	<button onclick="javascript:show();">测试2</button>
+	<button>测试3</button>
+	<script>
+		function show(){
+			alert("this is test2");
+		}
+		
+		// Array.prototype.slice.call(document.getElementsByTagName("button"),0).forEach(function(item){
+		// 	item.onclick = function(){
+		// 		alert("this is test3");
+		// 	}
+		// });
+
+		//延时2000执行
+		setTimeout(function(){
+			$(`<button onclick="javascript:show();">测试2</button>`).appendTo($('body'));
+		},2000);
+
+
+	</script>
+</body>
+</html>

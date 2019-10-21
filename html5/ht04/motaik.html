@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模态框</title>
+	<style>
+		.hid{
+			position: fixed;
+			width: 300px;
+			height: 300px;
+			top: 50%;
+			left: 50%;
+			margin-top: -150px;
+			margin-left: -150px;
+			background-color: pink;
+			display: none;
+		}
+		.hid:target{
+			display: block;
+		}
+		.hid > a{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.3);
+		}
+		.hid:target > a{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="con">
+		<a href="#motai">点击显示模态框</a>
+	</div>
+	<div id="motai" class="hid" >
+		<a href=""></a>
+		<p><a href="">X</a></p>
+		<div>我是模态框</div>
+	</div>
+</body>
+</html>

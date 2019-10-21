@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单向数据流</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		a:{{a}}
+		<my-test :a="a"></my-test>
+	</div>
+	<script>
+		Vue.component("my-test",{
+			template:`
+				<div>
+					<p>a:{{a}}</p>
+					<button @click="changeA">增加</button>
+				</div>
+			`,
+			props:["a"],
+			methods:{
+				changeA(){
+					this.a++;
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				a:3
+			},
+			created(){
+				setTimeout(()=>{
+					this.a++;
+				},2000)
+			}
+		})
+	</script>
+</body>
+</html>

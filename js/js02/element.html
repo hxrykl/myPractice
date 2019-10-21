@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>element</title>
+</head>
+<body>
+	<div class="one">
+		<div class="h">1</div>
+		<div>2</div>
+		<p>3</p>
+		<h1>4</h1>
+		<ul class="last" id="zuihou" name="自定义">
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+		</ul>
+	</div>
+
+	<script>
+		var one = document.body.children[0];
+		console.log(one.children);
+
+		console.log(one.firstElementChild);
+		console.log(one.lastElementChild.id);
+		console.log(one.lastElementChild.className);
+
+		console.log(one.lastElementChild.getAttribute("name"));
+	</script>
+</body>
+</html>

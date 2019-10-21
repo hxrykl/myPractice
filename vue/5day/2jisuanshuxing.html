@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<p>{{reverseMessage()}}</p>
+		<p>{{reverseMessage()}}</p>
+		<p>{{reverseMsg}}</p>
+		<p>{{reverseMsg}}</p>
+		{{gender}}
+		<button @click="gender = 'male'">男</button>
+		<button @click="gender = 'female'">女</button>
+
+		<ul>
+			<li v-for="item in studentsFilter">{{item}}</li>
+				
+		</ul>
+		<ul>
+			<li v-for="item in studentsFilter">{{item}}</li>
+				
+		</ul>
+
+	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				message:"hello world",
+				students:[
+					{id:1,name:"terry",gender:"male"},
+					{id:2,name:"larry",gender:"female"},
+					{id:3,name:"marry",gender:"male"},
+					{id:4,name:"lirry",gender:"male"},
+					{id:4,name:"boom",gender:"female"}
+				],
+				gender:"male"
+			},
+			//计算属性
+			computed:{
+				// 只执行一次，如果变量message没改变
+				reverseMsg(){
+					console.log("第二"+Math.random());
+					return this.message.split("").reverse().join("");
+				},
+				studentsFilter(){
+					console.log("第三"+Math.random());
+					// 只要变量gender发送改变就会执行函数
+					return this.students.filter(s => s.gender === this.gender);
+				}
+			},
+			methods:{
+				//调用多少次就执行多少次，不管变量是否改变
+				reverseMessage(){
+					console.log("第一"+Math.random());
+					return this.message.split("").reverse().join("")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

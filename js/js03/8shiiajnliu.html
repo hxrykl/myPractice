@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件流</title>
+	<style>
+		div{
+			padding: 40px;
+			box-sizing: border-box;
+			border: 1px solid #000;
+
+		}
+		div#one{
+			width:300px;
+			height: 300px;
+			margin: 0 auto;
+		}
+		div#two,div#stree{
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="one">
+		<div id="two">
+			<div id="stree"></div>
+		</div>
+	</div>
+
+	<script>
+		var one = document.getElementById("one");
+		var two = document.getElementById("two");
+		var stree = document.getElementById("stree");
+
+		// one.onclick = function(){
+		// 	console.log("one");
+		// }
+
+		// two.onclick = function(){
+		// 	console.log("two");
+		// }
+		// stree .onclick = function(){
+		// 	console.log("stree");
+		// }
+
+		var hander = function(event){
+			//console.log(this);
+			//console.log(event.target);
+			//冒泡
+			console.log(event.currentTarget.id);
+
+			alert(event.currentTarget.id);
+			//停止冒泡
+			event.stopPropagation();
+
+		};
+
+		one.onclick = hander;
+		two.onclick = hander;
+		stree.onclick = hander;
+	</script>
+</body>
+</html>

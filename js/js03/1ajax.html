@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script>
+		window.onload = function(){
+			//声明函数
+			function  getAllCustomer( ){
+				//实例化对象
+				var xhr = new XMLHttpRequest();
+				//设置请求行
+				xhr.open("get",'http://134.175.154.93:6677/customer/findCustomerAll');
+				//设置请求头(Content-Type)
+				xhr.responseType = "json"; //设置响应的信息为json
+				//设置请求体
+				xhr.send();
+				//监听响应
+				xhr.onreadystatechange = function(){
+					//alert(this.readyState+""+this.status+""+JSON.stringify(this.response));
+
+					if(this.readyState === 4){
+						if(this.status === 200){
+							console.log(this.response);
+
+						}else{
+							console.log("error",this.response);
+						}
+					}
+				}
+			}
+
+			//调用函数
+			getAllCustomer();
+
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

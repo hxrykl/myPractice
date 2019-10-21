@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>梦幻西游动画</title>
+	<style>
+		*{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		html,body,.container{
+			height: 100%;
+			background-color: #cdcdcd;
+		}
+		.ck{
+			height: 100%;
+			width: 1535px;
+			overflow-x:hidden;
+			margin: 0 auto;
+		}
+		.bg{
+			width: 4000px;
+			height: 100%;
+			background-image:url('yximages/bg.jpg');
+			background-repeat: repeat-x;
+			margin-left: -1920px;
+			animation-name: b;
+			animation-duration: 30s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+		}
+         @keyframes b{
+         	from{
+         		margin-left: -1920px;
+         	}
+         	to{
+         		margin-left: 0px;
+         	}
+         }
+         .rw{
+         	position: absolute;
+         	bottom: 150px;
+         	left: 50%;
+         	margin-left: -400px;
+         }
+         .rw > ul > li{
+         	float: left;
+         	height: 150px;
+         	margin-right: 50px;
+         	width: 130px;
+         	overflow: hidden;
+
+         }
+         .rw > ul::after{
+         	content: '';
+         	display: block;
+         	clear: both;
+         }
+         .rw > ul > li > div{
+         	height: 150px;
+         	width: 965px;
+         	animation-name: r;
+         	animation-duration: 1s;
+         	animation-timing-function: steps(8);
+         	animation-iteration-count: infinite;
+         }
+         .rw img{
+			width: 100%;
+         }
+         @keyframes r{
+         	from{
+         		margin-left: 0px;
+         	}
+         	to{
+         		margin-left: -965px;
+         	}
+         }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="ck">
+			<div class="bg">
+				
+			</div>
+		</div>
+		<div class="rw">
+				<ul>
+					<li>
+						<div><img src="yximages/ts.png" alt=""></div>
+					</li>
+					<li>
+						<div><img src="yximages/bj.png" alt=""></div>
+					</li>
+					<li>
+						<div><img src="yximages/ss.png" alt=""></div>
+					</li>
+					<li>
+						<div><img src="yximages/wk.png" alt=""></div>
+					</li>
+				</ul>
+			</div>
+	</div>
+</body>
+</html>

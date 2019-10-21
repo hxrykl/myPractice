@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise.race</title>
+	<script>
+		function get_promise(url){
+			//将异步操作封装到承诺对象中
+			return new Promise((resolve,reject)=>{
+				let xhr = new XMLHttpRequest();
+				xhr.open("GET",url);
+				xhr.responseType = "json";
+				xhr.setRequestHeader( "Content-Type","application/x-www-form-urlencoded");
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(this.readyState === 4){
+						// 请求整体状态ok
+						if(this.status === 200){
+							// 承诺成功
+							resolve(this.response);
+						}else{
+							//承诺失败
+							reject(this)
+						}
+					}
+				}
+			});
+		}
+
+		let url1 = "http://39.105.108.131:6677/order/findAll1";
+		let url2 = "http://39.105.108.131:6677/product/findAll1";
+		let url3 = "http://39.105.108.131:6677/comment/findAll";
+		let p1 = get_promise(url1);
+		let p2 = get_promise(url2);
+		let p3 = get_promise(url3);
+		//只要有一个成功就返回成功结果
+		let p = Promise.race([p1,p2,p3]);
+		p.then((result)=>{
+			console.log("Success1",result);
+		})
+		.catch((error)=>{
+			console.log("出现问题1",error);
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

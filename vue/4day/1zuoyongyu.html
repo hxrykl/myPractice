@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域插槽</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-list :data="list">
+			<!-- scope被inner绑定为属性值,，scope可以取任意名 -->
+			<template v-slot:inner="scope">
+				<p>{{scope}}</p>
+				<p>{{scope.row}}</p>
+			</template>
+		</my-list>
+		<my-list :data="customers">
+			<template v-slot:inner="scope">
+				<p>{{scope.row.name}}</p>
+				<p>{{scope.row.age}}</p>
+			</template>
+		</my-list>
+		<my-list :data="products">
+			<template v-slot:inner="scope">
+				<p>{{scope.row.name}}</p>
+				<p>{{scope.row.price}}</p>
+			</template>
+		</my-list>
+	</div>
+	<script>
+		//封装ul>li,v-for,
+		let myList = {
+			template:`
+				<div class="list">
+					<ul :style="style.basic">
+						<li v-for="item in data">
+<<<<<<< HEAD
+<<<<<<< HEAD
+							<!-- 设置一个名为row的属性，绑定item值 -->
+							<slot name="inner" :row="item"></slot>
+=======
+							{{item}}
+							<slot name="inner" :row="item">
+							</slot>
+>>>>>>> 作用域插槽
+=======
+							{{item}}
+							<slot name="inner" :row="item">
+							</slot>
+=======
+							<!-- 设置一个名为row的属性，绑定item值 -->
+							<slot name="inner" :row="item"></slot>
+>>>>>>> 95906c23d83836c2da90be4a688a9b3266a5a6bc
+>>>>>>> 9737786a630f8343951258b5456d3e48989b4a7f
+						</li>
+					</ul>
+				</div>
+			`,
+			data(){
+				return {
+					style:{
+						basic:{
+							"list-style":"none",
+							"margin":"0",
+							"pardding":"0",
+							"background-color":"pink",
+							"color":"#efeffe"
+						}
+					}
+				}
+			},
+			props:{
+				data:{
+					type:Array,
+					required:true
+				}
+			}
+		}
+
+		Vue.component("my-list",myList)
+
+
+		new Vue({
+			el:"#app",
+			data:{
+				list:["terry","larry","marry"],
+				customers:[
+					{
+						name:"te",
+						gender:"male",
+						age:12
+					},
+					{
+						name:"la",
+						gender:"female",
+						age:16
+					},
+					{
+						name:"jk",
+						gender:"male",
+						age:14
+					}
+				],
+				products:[
+					{
+						name:"可口可乐",
+						price:"3.0",
+						number:60
+					},
+					{
+						name:"百世可乐",
+						price:"3.0",
+						number:70
+					},
+					{
+						name:"雪碧",
+						price:"3.0",
+						number:80
+					}
+				]
+			}
+		})
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+<style type="text/css">
+canvas {
+    border: dashed 2px #CCC
+}
+
+canvas#Mycanvas {
+    background-color: #ccc;
+    border: 1px solid #c3c3c3;
+}
+</style>
+<script type="text/javascript">
+function $$(id) {
+    return document.getElementById(id);
+}
+
+function pageLoad() {
+    var can = $$('can');
+    var cans = can.getContext('2d');
+    cans.moveTo(20, 30); //第一个起点
+    cans.lineTo(120, 90); //第二个点
+    cans.lineTo(220, 60); //第三个点（以第二个点为起点）
+    cans.lineWidth = 3;
+    cans.strokeStyle = 'red';
+    cans.stroke();
+}
+</script>
+
+
+<body onload="pageLoad();">
+    <canvas id="can" width="400px" height="300px">4</canvas>
+    <canvas id="Mycanvas" width="400px" height="300px"></canvas>
+    <canvas id="Mycanvas3" width="400px" height="300px"></canvas>
+    <script type="text/javascript">
+     var Mycanvas3 = document.getElementById('Mycanvas3');
+     var d = Mycanvas3.getContext("2d");
+     d.beginPath();
+     d.translate(160,50);
+     d.rotate(180*Math.PI/180)
+     d.strokeStyle = '#FFA500';
+     d.strokeRect(0, 0, 50, 20);
+
+    
+    //获取canvas元素
+    var Mycanvas = document.getElementById('Mycanvas');
+    //获取canvas元素操作上下文getContext对象
+    // var c = Mycanvas.getContext("2d");
+    // c.beginPath();
+    // c.translate(150,150);
+    // c.rotate(270*Math.PI/180);
+    // c.fillStyle = 'black';
+    // c.arc(0,0,100,0*Math.PI/90,90*Math.PI/90,true);
+    // c.fill();
+
+    var b = Mycanvas.getContext("2d");
+    b.beginPath();
+    b.translate(150,150);
+    b.rotate(90*Math.PI/180);
+    b.fillStyle = '#fff';
+    b.arc(0,0,100,0*Math.PI/90,90*Math.PI/90,true);
+    b.fill();
+
+
+    b.beginPath();
+    b.translate(0,0);
+    b.rotate(180*Math.PI/180);
+    b.fillStyle = 'black';
+    b.arc(0,0,100,0*Math.PI/90,90*Math.PI/90,true);
+    b.fill();
+
+    b.beginPath();
+    b.fillStyle = 'black';
+    b.arc(50,0,50,0*Math.PI/90,180*Math.PI/90,true);
+    b.fill();
+
+    b.beginPath();
+    b.fillStyle = '#fff';
+    b.arc(-50,0,50,0*Math.PI/90,180*Math.PI/90,true);
+    b.fill();
+
+
+    b.beginPath();
+    b.fillStyle = '#fff';
+    b.arc(50,0,15,0*Math.PI/90,180*Math.PI/90,true);
+    b.fill();
+
+    b.beginPath();
+    b.fillStyle = 'black';
+    b.arc(-50,0,15,0*Math.PI/90,180*Math.PI/90,true);
+    b.fill();
+   // c.save();
+   
+    
+    // c.fillStyle = 'green';
+    // c.arc(50,50,50,0,Math.PI*0.5,true);
+    // c.fill();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{student}}
+		<form @submit.prevent="handler">
+			姓名<input type="text" v-model="student.username"><br>
+			密码<input type="password" v-model="student.password"><br>
+			性别<label><input type="radio" v-model="student.gender" value="男">男</label>
+				<label ><input type="radio" v-model="student.gender" value="女">女</label>
+				<br>
+			爱好<label ><input type="checkbox" v-model="student.hobbies" value="篮球">篮球</label>
+				<label ><input type="checkbox" v-model="student.hobbies" value="足球">足球</label>
+				<label ><input type="checkbox" v-model="student.hobbies" value="阅读">阅读</label>
+				<br>
+			地址
+				<select v-model="student.address">
+					<option value="江苏">江苏</option>
+					<option value="山西">山西</option>
+					<option value="甘肃">甘肃</option>
+					<option value="广西">广西</option>
+				</select>
+				<br>
+			介绍
+				<textarea cols="30" rows="10" v-model="student.description"></textarea>
+			<input type="submit" value="提交">
+		</form>
+	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				
+				student:{
+					username:"te",
+					hobbies:[],
+					gender:"女"
+				}
+			},
+			methods:{
+				//获取表单值
+				handler(){
+					alert(JSON.stringify(this.student));
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

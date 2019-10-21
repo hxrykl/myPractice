@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>演示</title>
+	<style>
+		.products,.noafter{
+			width: 300px;
+			height:auto;
+			background-color: pink;
+		}
+		.products > div{
+			background-color: teal;
+			float: left;
+		}
+		.products::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.noafter > p{
+			background-color: blue;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="products">
+		<div>第一个div</div>
+		<div>第二个div</div>
+		<div>第三个div</div>
+		<div>第四个div</div>
+	</div>
+	<div class="noafter">
+		<p>第一个p</p>
+		<p>第二个p</p>
+		<p>第三个p</p>
+		<p>第一四个p</p>
+	</div>
+</body>
+</html>
