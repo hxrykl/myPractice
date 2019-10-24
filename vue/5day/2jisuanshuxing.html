@@ -11,11 +11,12 @@
 		<p>{{message}}</p>
 		<p>{{reverseMessage()}}</p>
 		<p>{{reverseMessage()}}</p>
+		<!-- 不用执行函数，直接调用函数名就行 -->
 		<p>{{reverseMsg}}</p>
 		<p>{{reverseMsg}}</p>
 		{{gender}}
-		<button @click="gender = 'male'">男</button>
-		<button @click="gender = 'female'">女</button>
+		<button @click="gender = 'male';message = 'hello'">男</button>
+		<button @click="gender = 'female';message = 'world'">女</button>
 
 		<ul>
 			<li v-for="item in studentsFilter">{{item}}</li>

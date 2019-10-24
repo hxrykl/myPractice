@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>监听器</title>
+    <!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{params}}
+        <div>
+            <input type="text" v-model="params.realname" placeholder="请输入用户名">
+            <input type="text" v-model="params.telephone" placeholder="请输入手机号">
+        </div>
+    </div>
+    <script>
+    new Vue({
+        el: "#app",
+        data: {
+            params: {
+
+            }
+        },
+        //监听
+        watch: {
+        	//监听值
+            // "params.realname": function() {
+            //     console.log("===" + Math.random());
+            // }
+            //监听是否为空
+            // "params": function() {
+            //     console.log("===" + Math.random());
+            // }
+            //深度监听
+            "params":{
+            	handler:function(){
+            		console.log("----"+Math.random());
+            	},
+            	deep:true//深度监听
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

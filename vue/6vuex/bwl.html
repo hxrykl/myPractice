@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- vue -->
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+	<!-- lodash -->
+	<script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+	<title>备忘录</title>
+	<style>
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.item {
+			display: flex;
+		}
+		.item > div{
+			flex: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2>备忘录</h2>
+		<!-- 表单 -->
+		{{title}}
+		<form action="" @submit.prevent = "add">
+			<input type="text" v-model="title">
+			<input type="submit" value="提交">
+		</form>
+		<!-- 列表 -->
+		<ul>
+			<li v-for="item in list">
+				<div class="item">
+					<div>{{item.id}}</div>
+					<div>{{item.title}}</div>
+					<div>{{item.status}}</div>
+					<div>
+						<a href="" @click.prevent="delete1(item.id)">删除</a>
+						<a href="">完成</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script>
+		//测试lodash
+		console.log(_);
+		new Vue({
+			el:"#app",
+			data:{
+				title:"",
+				list:[
+					{id:1,title:"今天的汇报工作未完成",status:"未完成"}
+				]
+			},
+			methods:{
+				//添加备忘信息
+				add(){
+					let id = this.list[this.list.length-1].id+1;
+					let bw = {id,title:this.title,status:"未完成"}
+					//push方法被监听了，所以才能页面数值更新
+					this.list.push(bw);
+				},
+				//修改备忘信息状态
+				editStatus(status){
+
+				},
+				//删除备忘信息
+				delete1(id){
+					//lodash
+					_.remove(this.list,item=>item.id === id);
+					//克隆
+					this.list = _.clone(this.list)
+					console.log(this.list);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
