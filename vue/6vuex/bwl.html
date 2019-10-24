@@ -39,7 +39,7 @@
 					<div>{{item.status}}</div>
 					<div>
 						<a href="" @click.prevent="delete1(item.id)">删除</a>
-						<a href="">完成</a>
+						<a href="" @click.prevent="editStatus(item.id)">修改</a>
 					</div>
 				</div>
 			</li>
@@ -60,13 +60,17 @@
 				//添加备忘信息
 				add(){
 					let id = this.list[this.list.length-1].id+1;
-					let bw = {id,title:this.title,status:"未完成"}
+					let bw = {id,title:this.title,status:"未完成"};
 					//push方法被监听了，所以才能页面数值更新
 					this.list.push(bw);
 				},
 				//修改备忘信息状态
-				editStatus(status){
-
+				editStatus(id){
+					this.list.forEach((item)=>{
+						if(item.id === id){
+							item.status = "完成";
+						}
+					})
 				},
 				//删除备忘信息
 				delete1(id){

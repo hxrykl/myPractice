@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- vue -->
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+	<!-- lodash -->
+	<script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+	<script src="https://cdn.bootcss.com/vuex/3.1.1/vuex.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+	<title>备忘录</title>
+	<style>
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.item {
+			display: flex;
+		}
+		.item > div{
+			flex: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2>备忘录</h2>
+		<!-- 表单 -->
+		{{title}}
+		<form action="" @submit.prevent = "addHandler">
+			<input type="text" v-model="title">
+			<input type="submit" value="提交">
+		</form>
+		<!-- 列表 -->
+		<ul>
+			<li v-for="item in list">
+				<div class="item">
+					<div>{{item.id}}</div>
+					<div>{{item.title}}</div>
+					<div>{{item.status}}</div>
+					<div>
+						<a href="" @click.prevent="delete1Handler(item.id)">删除</a>
+						<a href="" @click.prevent="editStatusHandler(item.id)">修改</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!-- 顾客 -->
+		<button @click="loadCustomers">加载顾客信息</button>
+		{{customers}}
+	</div>
+	<script>
+		//测试lodash
+		console.log(_);
+
+		let store = new Vuex.Store({
+			state:{
+				list:[
+					{id:1,title:"今天的汇报工作未完成",status:"未完成"}
+				],
+				customers:[]
+			},
+			getters:{
+
+			},
+			//突变只能写同步代码
+			mutations:{
+				//添加备忘信息
+				add(state,title){
+					let id = state.list[state.list.length-1].id+1;
+					let bw = {id,title,status:"未完成"};
+					//push方法被监听了，所以才能页面数值更新
+					state.list.push(bw);
+				},
+				//修改备忘信息状态
+				editStatus(state,id){
+					state.list.forEach((item)=>{
+						if(item.id === id){
+							item.status = "完成";
+						}
+					})
+				},
+				//删除备忘信息
+				delete1(state,id){
+					//lodash
+					_.remove(state.list,item=>item.id === id);
+					//克隆
+					state.list = _.clone(state.list)
+					console.log(state.list);
+				},
+				refreshCustomers(state,customers){
+					state.customers = customers;
+					console.log("走不走");
+				}
+			},
+			actions:{
+				async findAllCustomers(context){
+					let response = await axios.get("http://39.105.108.131:6677/customer/findAll");
+					//调用突变。更新customers
+					context.commit("refreshCustomers",response.data.data);
+					console.log("daole");
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			store,
+			data:{
+				title:"", 
+			},
+			computed:{
+				list:function(){
+					return this.$store.state.list;
+				},
+				customers:function(){
+					return this.$store.state.customers;
+				}
+			},
+			methods:{
+				addHandler(){
+					this.$store.commit('add',this.title)
+				},
+				delete1Handler(id){
+					this.$store.commit("delete1",id)
+				},
+				editStatusHandler(id){
+					this.$store.commit("editStatus",id) 
+				},
+				loadCustomers(){
+					this.$store.dispatch("findAllCustomers")
+					console.log("先到这");
+				}
+			}
+		})
+	</script>
+</body>
+</html>
