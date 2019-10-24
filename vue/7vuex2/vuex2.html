@@ -17,14 +17,15 @@
         <h2>顾客管理</h2>
         <!-- 按钮 -->
         <div class="btns">
-            <button>添加</button>
+            <button @click="toAddHandler">添加</button>
             <button>批量删除</button>
         </div>
         <!-- 表单 -->
-        <form action="visible" v-show="" @submit.prevent="submitHandler">
+        <form action="" v-show="visible" @submit.prevent="submitHandler">
             姓名<input type="text" v-model="form.realname">
             手机<input type="text" v-model="form.telephone">
             <input type="submit" value="提交">
+            <input type="reset" value="取消" @click="closeMo">
         </form>
         <!-- 表格 -->
         <table>
@@ -38,11 +39,11 @@
             </thead>
             <tbody>
                 <tr v-for="c in customers">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{c.id}}</td>
+                    <td>{{c.realname}}</td>
+                    <td>{{c.telephone}}</td>
                     <td>
-                        <a href="" @click.prevent="deleteHandler">删除</a>
+                        <a href="" @click.prevent="deleteHandler(c.id)">删除</a>
                         <a href="" @click.prevent="editHandler">修改</a>
                     </td>
                 </tr>
@@ -81,12 +82,26 @@
                 //将顾客的信息设置到state.customers中
                 //提交突变 
                 context.commit("refreshCustomers", response.data.data);
+            },
+            async deleteCustomerById({dispatch},id){
+            	//删除顾客信息
+            	let response = await axios.get("/customer/deleteById?id="+id);
+            	//刷新
+            	dispatch("findAllCustomers");
+            	//提示成功
+            	return response;
+
             }
+            // async saveOrUpdateCustomer({dispatch}){
+            // 	let response = await axios({
+            // 		url:"/customer/"
+            // 	})
+            // }
         }
     })
     //分发
-    store.dispatch("findAllCustomers");
-    console.log("customers", store.state);
+    // store.dispatch("findAllCustomers");
+    // console.log("customers", store.state);
     //
     new Vue({
         el: "#app",
@@ -94,27 +109,59 @@
             form: {}
         },
         store,
-        created() {},
-        computed: {
-            customers: function() {
-                return this.$store.customers;
-            },
-            visible: function() {
-                return this.$store.state.visible;
-            }
+        created() {
+            // this.$store.dispatch("findAllCustomers");
+            this.findAllCustomers();
         },
-        methods: {
+        computed: {
+            // 映射，将vuex state中的状态映射为vue中属性
+            // customers: function() {
+            //     return this.$store.state.customers;
+            // },
+            // visible: function() {
+            //     return this.$store.state.visible;
+            // }
+            //等价于上面两行
+            ...Vuex.mapState(["customers","visible"])
+            //普通属性
+        },
+         methods: {
+         	//映射，将action中得到动作映射为vue中的方法
+            /*findAllCustomers() {
+                return this.$store.dispatch("findAllCustomers")         
+            },
+            deleteCustomerById(id){
+            	return this.$store.dispatch("deleteCustomerById",id);
+            },
+            showMo(){
+            	return this.$store.commit("showMo");
+            },
+            closeMo(){
+            	return this.$store.commit("closeMo");
+            },*/
+            ...Vuex.mapActions(["findAllCustomers","deleteCustomerById"]),
+            ...Vuex.mapMutations(["showMo","closeMo"]),
+            
+            //普通方法
+            toAddHandler(){
+            	//	
+            	this.showMo();
+            },
             submitHandler() {
 
             },
-            deleteHandler() {
-
+            deleteHandler(id) {
+            	let promise = this.deleteCustomerById(id);
+            	promise.then((response)=>{
+            		alert(response.data.message);
+            	})
+            	console.log("promise",promise);
+            	
             },
             editHandler() {
-
+            	this.showMo();
             }
         }
-
     })
     </script>
 </body>
