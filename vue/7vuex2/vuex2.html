@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vuex+axios+vue</title>
+    <!-- vue -->
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <!-- lodash -->
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+    <script src="https://cdn.bootcss.com/vuex/3.1.1/vuex.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>顾客管理</h2>
+        <!-- 按钮 -->
+        <div class="btns">
+            <button>添加</button>
+            <button>批量删除</button>
+        </div>
+        <!-- 表单 -->
+        <form action="visible" v-show="" @submit.prevent="submitHandler">
+            姓名<input type="text" v-model="form.realname">
+            手机<input type="text" v-model="form.telephone">
+            <input type="submit" value="提交">
+        </form>
+        <!-- 表格 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>手机号</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="c in customers">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="" @click.prevent="deleteHandler">删除</a>
+                        <a href="" @click.prevent="editHandler">修改</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+    axios.defaults.baseURL = "http://39.105.108.131:6677";
+    //状态机
+    let store = new Vuex.Store({
+        state: {
+            //表单显示与隐藏
+            visible: false,
+            //
+            customers: []
+        },
+        mutations: {
+            showMo(state) {
+                state.visible = true;
+
+            },
+            closeMo(state) {
+                state.visible = false;
+            },
+            //需要接受一个参数，这个参数为customers
+            refreshCustomers(state, customers) {
+                console.log("state", state);
+                state.customers = customers;
+            }
+        },
+        actions: {
+            async findAllCustomers(context) {
+                console.log("context", context);
+                //查询所有顾客信息
+                let response = await axios.get("/customer/findAll");
+                //将顾客的信息设置到state.customers中
+                //提交突变 
+                context.commit("refreshCustomers", response.data.data);
+            }
+        }
+    })
+    //分发
+    store.dispatch("findAllCustomers");
+    console.log("customers", store.state);
+    //
+    new Vue({
+        el: "#app",
+        data: {
+            form: {}
+        },
+        store,
+        created() {},
+        computed: {
+            customers: function() {
+                return this.$store.customers;
+            },
+            visible: function() {
+                return this.$store.state.visible;
+            }
+        },
+        methods: {
+            submitHandler() {
+
+            },
+            deleteHandler() {
+
+            },
+            editHandler() {
+
+            }
+        }
+
+    })
+    </script>
+</body>
+
+</html>
