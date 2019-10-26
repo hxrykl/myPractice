@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>存储机制2</title>
+	<script>
+		//会话存储只能存于当前页面
+		// sessionStorage.setItem("id","1001")
+		// sessionStorage.setItem("name","terry")
+
+		//本地存储也只能存于当前页面
+		//localStorage.setItem("id2","1002")
+
+		setTimeout(()=>{
+			alert(localStorage.getItem("id2"));
+		},3000)
+		setTimeout(()=>{
+			alert(sessionStorage.getItem("id"));
+		},3000)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

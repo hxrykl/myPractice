@@ -10,6 +10,8 @@
     <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
     <script src="https://cdn.bootcss.com/vuex/3.1.1/vuex.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
 </head>
 
 <body>
@@ -34,23 +36,28 @@
                     <th>编号</th>
                     <th>姓名</th>
                     <th>手机号</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="c in customers">
+                <tr v-for="c in customerStatusFilter()">
                     <td>{{c.id}}</td>
                     <td>{{c.realname}}</td>
                     <td>{{c.telephone}}</td>
+                    <td>{{c.status}}</td>
+
                     <td>
                         <a href="" @click.prevent="deleteHandler(c.id)">删除</a>
-                        <a href="" @click.prevent="editHandler">修改</a>
+                        <a href="" @click.prevent="editHandler(c)">修改</a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <script>
+    	//测试jquery
+    	// alert($.param({name:"terry",age:12}));
     axios.defaults.baseURL = "http://39.105.108.131:6677";
     //状态机
     let store = new Vuex.Store({
@@ -59,6 +66,22 @@
             visible: false,
             //
             customers: []
+        },
+        getters:{
+        	countCustomers(state){
+        		return state.customers.length;
+        	},
+        	//需要为获取器传递参数的写法
+        	customerStatusFilter(state){
+        		return function(status){
+        			if(status){
+        				return this.customers.filter(item=>item.status === status)
+        			}else{
+        				return this.customers;
+        			}
+        			
+        		}
+        	}
         },
         mutations: {
             showMo(state) {
@@ -69,7 +92,7 @@
                 state.visible = false;
             },
             //需要接受一个参数，这个参数为customers
-            refreshCustomers(state, customers) {
+            refreshCustomers(state,customers) {
                 console.log("state", state);
                 state.customers = customers;
             }
@@ -91,12 +114,25 @@
             	//提示成功
             	return response;
 
+            },
+            async saveOrUpdateCustomer({dispatch,commit},customer){
+            	console.log("customer",customer);
+            	//提交请求
+            	let response = await axios({
+            		method:"post",
+            		url:"/customer/saveOrUpdate",
+            		data:$.param(customer),
+            		headers:{
+            			"Content-Type":"application/x-www-form-urlencoded"
+            		}
+            	});
+            	//关闭模态框
+            	commit("closeMo");
+            	//刷新页面
+            	dispatch("findAllCustomers");
+            	//提示成功
+            	return response;
             }
-            // async saveOrUpdateCustomer({dispatch}){
-            // 	let response = await axios({
-            // 		url:"/customer/"
-            // 	})
-            // }
         }
     })
     //分发
@@ -122,14 +158,15 @@
             //     return this.$store.state.visible;
             // }
             //等价于上面两行
-            ...Vuex.mapState(["customers","visible"])
+            ...Vuex.mapState(["customers","visible"]),
+            ...Vuex.mapGetters(["countCustomers","customerStatusFilter"])
             //普通属性
         },
          methods: {
          	//映射，将action中得到动作映射为vue中的方法
             /*findAllCustomers() {
                 return this.$store.dispatch("findAllCustomers")         
-            },
+            }, 
             deleteCustomerById(id){
             	return this.$store.dispatch("deleteCustomerById",id);
             },
@@ -139,7 +176,7 @@
             closeMo(){
             	return this.$store.commit("closeMo");
             },*/
-            ...Vuex.mapActions(["findAllCustomers","deleteCustomerById"]),
+            ...Vuex.mapActions(["findAllCustomers","deleteCustomerById","saveOrUpdateCustomer"]),
             ...Vuex.mapMutations(["showMo","closeMo"]),
             
             //普通方法
@@ -148,7 +185,13 @@
             	this.showMo();
             },
             submitHandler() {
-
+            	//表单验证
+            	//提交表单
+            	this.saveOrUpdateCustomer(this.form)
+            	.then((response)=>{
+            		alert(response.data.message);
+            	})
+            	console.log("vue",this.form);
             },
             deleteHandler(id) {
             	let promise = this.deleteCustomerById(id);
@@ -158,7 +201,8 @@
             	console.log("promise",promise);
             	
             },
-            editHandler() {
+            editHandler(row) {
+            	this.form = row;
             	this.showMo();
             }
         }

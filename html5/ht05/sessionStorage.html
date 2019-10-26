@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>存储机制</title>
+	<script>
+		//会话存储存储在浏览器 只要不关闭浏览器，数据就一直在
+		//sessionStorage.setItem("id","1001")
+		// sessionStorage.setItem("name","terry")
+
+		
+		//本地存储关闭浏览器数据也存在
+		setTimeout(()=>{
+			alert(localStorage.getItem("id2"));
+		},3000)
+		setTimeout(()=>{
+			alert(sessionStorage.getItem("id"));
+		},3000)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

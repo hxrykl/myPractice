@@ -1,0 +1,70 @@
+1、views 
+	1）新建waiter文件夹
+	2）waiter文件夹下新建index.vue
+		<template>
+		    <div id="waiter">
+		        <div>test</div>
+
+		    </div>
+		</template>
+
+		<script>
+		export default {
+		    
+		}
+		</script>
+
+		<style scoped>
+		    
+		</style>
+
+2、store
+	1）新建waiter.js
+		import {get,post,post_array} from '../http/axios'
+		export default{
+		    namespaced:true,
+		    state:{
+
+		    },
+		    getters:{
+
+		    },
+		    mutations:{
+
+		    },
+		    actions:{
+		        
+		    }
+		}
+	2）自带的index.js文件中		
+		import waiter from './waiter'
+		const store = new Vuex.Store({
+		  modules: {
+		    app,
+		    settings,
+		    user,
+		    waiter
+		  },
+		  getters,
+		})
+
+3、router
+	index.js文件中
+	{
+		path: '/',
+		component: Layout,
+		redirect: '/waiter',
+		children: [{
+			path: 'waiter',
+			name: 'wiater',
+			component: () => import('@/views/waiter/index'),
+			meta: { title: '员工管理', icon: 'icon' }
+		}]
+	},
+
+	记得加引号
+
+4、src
+	1）新建http文件夹
+	2）http文件夹下新建axios.js
+		复制粘贴配置文件
