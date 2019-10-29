@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伸缩盒子</title>
+	<style>
+		.o{
+			display: flex;
+			flex-wrap:wrap;
+			flex-direction: column;
+			flex-direction: row;
+			justify-content:center;
+			justify-content:space-around;
+			align-content:center;
+			align-items:center;
+		}
+		.o >div{
+			height: 50px;
+			align-content:center;
+			width: 1500px;
+			align-self:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="o" style="background: #cdcdcd;height: 200px;">
+		<div style="background: #000080">111</div>
+		<div style="background: #5F9EA0">222</div>
+		<div style="background: #48D1CC">333</div>
+	</div>
+</body>
+</html>
