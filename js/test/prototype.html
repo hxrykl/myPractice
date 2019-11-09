@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype</title>
+</head>
+<body>
+	<script>
+		function p(name){
+			this.name= name;
+			this.sum = function(){
+				alert(this.name)
+			}
+		}
+
+		p.prototype.age = 10;
+
+		function p1() {
+			this.name = 'kk'
+		}
+		p1.prototype = new p();
+		var o = new p1();
+		console.log(o);
+
+		console.log(o.age);
+		console.log(o instanceof p);
+
+		console.log(p);
+		console.log(p.prototype);
+		console.log(p1);
+
+		console.log(p1.prototype);
+
+	</script>
+</body>
+</html>

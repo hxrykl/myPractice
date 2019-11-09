@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包解决异步</title>
+</head>
+<body>
+	<script>
+		var bibao = {
+			fn1:function (){
+				return (function(){return setTimeout(function(){console.log(5);},5000)})()
+			},
+			fn2:function (){
+				return (function(){return setTimeout(function(){
+					console.log(2);
+				},2000)})()
+			}
+		}
+		bibao.fn1();
+		bibao.fn2();
+
+		for(let i = 5;0<i;i--){
+			//局部作用域决定了值不同
+			(function(){setTimeout(function(){console.log(i,"i");},i*1000)})()
+		}
+
+		function abc() {
+            var a = this;
+            this.p1 = 3;
+            this.p2 = 4;
+            this.callback = function () {
+            	console.log(77);
+                return function (data) {
+                    var kk = a.p2;
+                    alert(a.p1);
+                }
+            };
+            this.get = function () {
+                // $.ajax({
+                //     type: "get",
+                //     url: "abcd.aspx",
+                //     beforeSend: function (XMLHttpRequest) {
+                //         //ShowLoading();
+                //     },
+                //     success: this.callback(),  //闭包返回函数,该函数自带上下文
+                //     error: function () {
+                //         //请求出错处理
+                //     }
+                // });
+                setTimeout(this.callback,4000);
+            }
+        }
+        var A = new abc();
+        A.get();
+	</script>
+</body>
+</html>
