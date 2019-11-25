@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数作用域</title>
+</head>
+<body>
+	<script>
+		var a = 1;
+		const a1 = {name:"la"}
+		var a2 = "lala"
+		function b(){
+			console.log(a,a1,a2)//变量提升，所以a为undefined，其他不会
+			var a = 2;
+			console.log(a,a1,a2)
+		}
+
+		b()
+		var c = new b("2")
+		for(var i = 0;i<2;i++){
+			var a =4;
+		}
+		console.log(a,c)
+		if(1){
+			var a =6;
+		}
+		console.log(a)
+	</script>
+</body>
+</html>
