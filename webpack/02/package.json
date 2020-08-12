@@ -1,0 +1,13 @@
+{
+  "name": "02",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "private": true,
+  "author": "wwl",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
