@@ -4,6 +4,7 @@ import Content from './content.js'
 // import Sidebar from './sidebar.js'
 var Sidebar = require('./sidebar.js')//CommonJS模块引入规范
 
+var img = require('./ns.jpg')
 
 new Header();
 
