@@ -4,10 +4,18 @@ import Content from './content.js'
 // import Sidebar from './sidebar.js'
 var Sidebar = require('./sidebar.js')//CommonJS模块引入规范
 
-var img = require('./ns.jpg')
-
 new Header();
 
 new Sidebar();
 
 new Content();
+
+// var ns = require('./ns.jpg')
+import ns from './ns.jpg'
+
+console.log(ns)
+
+let imgs = new Image()
+imgs.src = ns
+let root = document.getElementById('root')
+root.append(imgs)
