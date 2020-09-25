@@ -22,4 +22,4 @@ root.append(imgs)
 
 
 // import './index.css'
-import './ns.scss'
+import './index.scss'

@@ -1,1 +1,4 @@
-@import url(./ns.css);
+@import url('./ns.scss');
+/*img{
+	margin: 10px
+}*/
