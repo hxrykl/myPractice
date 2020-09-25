@@ -21,5 +21,5 @@ let root = document.getElementById('root')
 root.append(imgs)
 
 
-import './index.css'
+// import './index.css'
 import './ns.scss'
