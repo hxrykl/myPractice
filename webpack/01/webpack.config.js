@@ -34,9 +34,14 @@ module.exports = {
 			test: /\.scss$/,//匹配符合.css结尾的文件
 			use: [//配合使用,从下到上，从右到左顺序打包
 			'style-loader',//将css内容挂载到style标签里
-			'css-loader',//将多个css文件合并成一个css文件
+			{
+				loader: 'css-loader',//将多个css文件合并成一个css文件
+				options:{
+					importLoaders: 1 //通过import引入的样式文件使用在 css-loader 前应用的 loader 的数量
+				}
+			},
 			'sass-loader',//将 Sass 编译成 CSS
-			'postcss-loader'
+			// 'postcss-loader'
 			]
 		},]
 	},

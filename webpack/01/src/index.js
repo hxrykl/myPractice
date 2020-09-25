@@ -23,3 +23,7 @@ root.append(imgs)
 
 // import './index.css'
 import './index.scss'
+
+import createImg from './createImg'
+
+createImg()
