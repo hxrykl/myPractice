@@ -15,6 +15,7 @@
     "file-loader": "^6.1.0",
     "node-loader": "^1.0.1",
     "node-sass": "^4.14.1",
+    "postcss": "^8.0.9",
     "postcss-loader": "^4.0.2",
     "sass-loader": "^10.0.2",
     "scss-loader": "^0.0.1",

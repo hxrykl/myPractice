@@ -36,7 +36,7 @@ module.exports = {
 			'style-loader',//将css内容挂载到style标签里
 			'css-loader',//将多个css文件合并成一个css文件
 			'sass-loader',//将 Sass 编译成 CSS
-			'postcss-loader'
+			// 'postcss-loader'
 			]
 		},]
 	},
