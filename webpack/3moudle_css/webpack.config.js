@@ -37,7 +37,8 @@ module.exports = {
 			{
 				loader: 'css-loader',//将多个css文件合并成一个css文件
 				options:{
-					importLoaders: 2 //通过import引入的样式文件使用在 css-loader 前应用的 loader 的数量
+					importLoaders: 2, //通过import引入的样式文件使用在 css-loader 前应用的 loader 的数量
+					modules: true,//开启样式模块化
 				}
 			},
 			'sass-loader',//将 Sass 编译成 CSS
