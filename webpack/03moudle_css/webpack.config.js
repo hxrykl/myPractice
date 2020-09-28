@@ -19,12 +19,6 @@ module.exports = {
 				}
 			}
 		},{//规则
-			test: /\.(eot|ttf|svg)$/,//匹配符合.jpg .gif .png结尾的文件
-			use: {
-				// loader: 'file-loader',//打包的方案
-				loader: 'file-loader',
-			}
-		},{//规则
 			test: /\.vue$/,//匹配符合.vue结尾的文件
 			use: {
 				loader: 'vue-loader'//打包的方案
@@ -44,7 +38,7 @@ module.exports = {
 				loader: 'css-loader',//将多个css文件合并成一个css文件
 				options:{
 					importLoaders: 2, //通过import引入的样式文件使用在 css-loader 前应用的 loader 的数量
-					// modules: true,//开启样式模块化
+					modules: true,//开启样式模块化
 				}
 			},
 			'sass-loader',//将 Sass 编译成 CSS
