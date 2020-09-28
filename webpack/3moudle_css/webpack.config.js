@@ -19,7 +19,7 @@ module.exports = {
 				}
 			}
 		},{//规则
-			test: /\.(eot|ttf|svg)$/,//匹配符合.jpg .gif .png结尾的文件
+			test: /\.(eot|ttf|svg|woff)$/,//匹配符合.jpg .gif .png结尾的文件
 			use: {
 				// loader: 'file-loader',//打包的方案
 				loader: 'file-loader',
