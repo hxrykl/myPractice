@@ -1,6 +1,5 @@
 const path = require('path');//
-const HtmlWebpackPlugin = require('html-webpack-plugin');//会在打包结束后生成一个html文件，并把打包生成的js引入html文件
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 module.exports = {
 	mode: 'production',
 	// entry: './src/index.js',//打包开始文件
@@ -53,14 +52,8 @@ module.exports = {
 			]
 		},]
 	},
-	plugins: [//可以再webpack运行到某个时刻时,帮助你处理某些事
-		new HtmlWebpackPlugin({//打包之后运行，生成index.html文件
-			template: 'src/index.html'//指定模板
-		}),
-		new CleanWebpackPlugin()//打包之前运行,删除dist文件夹
-	],
 	output: { //打包好的文件放至
-		filename: 'index1.js',//打包好的文件命名
+		filename: 'index.js',//打包好的文件命名
 		path: path.resolve(__dirname, 'dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
 	}
 }
