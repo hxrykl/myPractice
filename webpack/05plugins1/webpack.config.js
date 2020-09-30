@@ -5,8 +5,7 @@ module.exports = {
 	mode: 'production',
 	// entry: './src/index.js',//打包开始文件
 	entry: {
-		main: './src/index.js',//默认
-		sub: './src/index.js'//多份打包
+		main: './src/index.js'
 	},
 	module: {
 		rules: [{//规则
@@ -61,9 +60,7 @@ module.exports = {
 		new CleanWebpackPlugin()//打包之前运行,删除dist文件夹
 	],
 	output: { //打包好的文件放至
-		publicPath: 'http://cdn.com',//打包好的js文件添加地址前缀
-		// filename: 'index.js',//打包好的文件命名，默认为main.js
-		filename: '[name].js',//多份打包时输出的文件名不能相同，这里用占位符解决
+		filename: 'index1.js',//打包好的文件命名
 		path: path.resolve(__dirname, 'dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
 	}
 }
