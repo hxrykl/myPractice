@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');//会在打包结束后
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 module.exports = {
-	mode: 'development',
-	devtool: 'cheap-moudle-eval-source-map',//报错指向原始源代码
+	mode: 'production',
+	devtool: 'cheap-moudle-source-map',//报错指向原始源代码
 	entry: {
 		main: './src/index.js',//默认
 	},
@@ -32,11 +32,11 @@ module.exports = {
 		new CleanWebpackPlugin(),//打包之前运行,删除dist文件夹
 		new webpack.HotModuleReplacementPlugin()
 	],
-	// optimization: {
-	// 	usedExports: true
+	// optimization: { //
+	// 	usedExports: true, //对于导入的模块，只做按需打包，模块中没有引入的代码不打包
 	// },
 	output: { //打包好的文件放至
-		publicPath: '/',//所有打包生成的文件之间的引用都增加一个根路径
+		publicPath: './',//所有打包生成的文件之间的引用都增加一个根路径
 		filename: '[name].js',//多份打包时输出的文件名不能相同，这里用占位符解决
 		path: path.resolve(__dirname, 'dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
 	}

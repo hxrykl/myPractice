@@ -1,13 +1,6 @@
-// import "@babel/polyfill";
-// import 'regenerator-runtime/runtime';//babel7.4之后替代@babel/polyfill
+//Tree Shaking 对于模块引入的内容按需打包 ，只支持ES Module方式引入
 
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+import {add} from './math.js';
 
-class App extends Component{//创建一个可以渲染出div内容的组件
-	render() {
-		return <div>hello world</div>
-	}
-}
+add(1, 2);
 
-ReactDom.render(<App />, document.getElementById('root'));//将组件挂载到页面
