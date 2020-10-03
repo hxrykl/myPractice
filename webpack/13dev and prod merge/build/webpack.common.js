@@ -21,6 +21,6 @@ module.exports = {
 	output: { //打包好的文件放至
 		// publicPath: './',//所有打包生成的文件之间的引用都增加一个根路径
 		filename: '[name].js',//多份打包时输出的文件名不能相同，这里用占位符解决
-		path: path.resolve(__dirname, 'dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
+		path: path.resolve(__dirname, '../dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
 	}
 }

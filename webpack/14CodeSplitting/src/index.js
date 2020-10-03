@@ -1,6 +1,6 @@
 
 
-import _ from 'lodash'; //假设1mb大小
+// import _ from 'lodash'; //假设1mb大小
 
 // //业务代码 假设1mb大小
 console.log(_.join(['a', 'b', 'c'], '***'));
@@ -17,7 +17,7 @@ console.log(_.join(['a', 'b', 'c'], '***'));
 //而不会重新加载未改变的ladash.js文件，进而提升速度
 
 function getComponent() { //异步加载模块的代码需要babel-plugin-dynamic-import-webpack解析，在.babelrc文件写入plugins: ["dynamic-import-webpack"]
-	return import(/*webpackChunkName:"lodash"*/'lodash').then(({default: _}) => {
+	return import('lodash').then(({default: _}) => {
 		var elemnt = document.createElment('div');
 		elemnt.innerHTML = _.join(['dell', 'lee'], '-');
 		return elemnt;

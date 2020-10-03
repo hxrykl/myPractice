@@ -2,5 +2,5 @@
 
 import {add} from './math.js';
 
-add(2, 5);
+add(2, 2);
 
