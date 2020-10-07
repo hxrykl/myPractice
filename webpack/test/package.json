@@ -2,7 +2,7 @@
   "name": "22library",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/library.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack"
   },
