@@ -10,41 +10,32 @@ const devConfig = require('./webpack.dev.js');
 const prodConfig = require('./webpack.prod.js');
 const fs = require('fs');//node核心模块
 
-const makePlugins = (configs) => {
-	const plugins = [
-		new CleanWebpackPlugin()
-	]
+const plugins = [
+	new HtmlWebpackPlugin({//打包之后运行，生成index.html文件
+		template: 'src/index.html'//指定模板
+	}),
+	new CleanWebpackPlugin()//打包之前运行,删除dist文件夹
+]
 
-	Object.keys(configs.entry).forEach(item => {
-		plugins.push(
-			new HtmlWebpackPlugin({
-				template: 'src/index.html',//指定模板
-				filename: `${item}.html`,//文件命名
-				chunks: ['runtime', 'vendors', item]//指定引入的js文件
-			})
-		)
-	});
-	const files = fs.readdirSync(path.resolve(__dirname, '../dll'));//将映射文件夹的文件路径集合到数组
-	files.forEach(file => {
-		if (/.*\.dll.js/.test(file)) {
-			plugins.push(new AddAssetHtmlWebpackPlugin({//将文件插入script标签里，达到模块全局变量作用
-				filepath: path.resolve(__dirname, '../dll', file)
-			}))
-		}
-		if (/.*\.manifest.js/.test(file)) {
-			plugins.push(new webpack.DllReferencePlugin({ 
-				manifest: path.resolve(__dirname, '../dll', file)
-			}))
-		}
-	});
-	return plugins;
-}
+const files = fs.readdirSync(path.resolve(__dirname, '../dll'));//将映射文件夹的文件路径集合到数组
+// console.log(files);
+
+files.forEach(file => {
+	if (/.*\.dll.js/.test(file)) {
+		plugins.push(new AddAssetHtmlWebpackPlugin({//将文件插入script标签里，达到模块全局变量作用
+			filepath: path.resolve(__dirname, '../dll', file)
+		}))
+	}
+	if (/.*\.manifest.js/.test(file)) {
+		plugins.push(new webpack.DllReferencePlugin({ 
+			manifest: path.resolve(__dirname, '../dll', file)
+		}))
+	}
+})
 
 const commonConfig = {
 	entry: {
-		index: './src/index.js',//默认
-		list: './src/list.js',
-		detail: './src/detail.js'
+		main: './src/index.js',//默认
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],//引入模块文件名没有后缀时，按顺序匹配
@@ -61,6 +52,17 @@ const commonConfig = {
 			}]
 		}]
 	},
+	plugins,//键和值一样直接写键名
+	// plugins: [//可以再webpack运行到某个时刻时,帮助你处理某些事
+	// 	// new AddAssetHtmlWebpackPlugin({//将文件插入script标签里，达到模块全局变量作用
+	// 	// 	filepath: path.resolve(__dirname, '../dll/vendors.dll.js')
+	// 	// }),
+	// 	// new webpack.DllReferencePlugin({//使用映射文件
+	// 	// 	manifest: path.resolve(__dirname, '../dll/vendors.manifest.json')
+	// 	// }),
+		
+	// ],
+
 	optimization: { //Tree Shaking
 		runtimeChunk: {//解决旧版webpack打包时manifest处理相同的源代码生成不同打包代码问题（也就是导致哈希值不同的问题），
 			name: 'runtime'
@@ -88,9 +90,6 @@ const commonConfig = {
 		path: path.resolve(__dirname, '../dist')//打包好的文件存放的文件夹，必须是绝对路径；__dirname代指当前文件下的绝对路径，bundle指定文件夹名
 	}
 }
-
-commonConfig.plugins = makePlugins(commonConfig);
-
 module.exports = (env) => {
 	if (env && env.production) {
 		return merge(commonConfig, prodConfig);

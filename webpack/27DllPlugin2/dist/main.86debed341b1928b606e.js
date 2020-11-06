@@ -2,25 +2,25 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(0);
+module.exports = (__webpack_require__(1))(1);
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = vendors;
+module.exports = reactdom;
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(4);
+module.exports = (__webpack_require__(1))(9);
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(8);
+module.exports = (__webpack_require__(5))(4);
 
 /***/ }),
 /* 4 */
@@ -47,6 +47,12 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('root'));
 
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = vendors;
+
 /***/ })
 ],[[4,1]]]);
-//# sourceMappingURL=main.5fd7c3a50dfc5da7a8e6.js.map
+//# sourceMappingURL=main.86debed341b1928b606e.js.map
