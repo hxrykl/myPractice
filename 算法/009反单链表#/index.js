@@ -11,12 +11,23 @@
 //迭代法
 var reverseList = function(head) {
     let prev = null, next, cur = head
-    while(cur){
-        next = cur.next
-        cur.next = prev
-        prev = cur
-        cur = next
+    while(cur){//终止条件为空时
+        next = cur.next //对下一个缓存
+        cur.next = prev //翻转指向
+        prev = cur //缓存上一个
+        cur = next //下一个
     }
     head = prev
     return head
+};
+
+//递归法
+var rever = function(pre, cur) {
+    if(!cur) return pre
+    let cur2 = cur.next;
+    cur.next = pre;
+    return rever(cur, cur2)
+}
+var reverseList = function(head) {
+    return rever(null, head)
 };
