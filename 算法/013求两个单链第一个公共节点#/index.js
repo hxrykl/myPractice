@@ -2,7 +2,7 @@
 输入两个链表，找出它们的第一个公共节点。
 */
 
-//双指针法 O(n) O(1)
+//双指针+互补 O(n) O(1)
 var getIntersectionNode = function(headA, headB) {
     let A = headA, B = headB
     while(A || B){
@@ -14,7 +14,7 @@ var getIntersectionNode = function(headA, headB) {
 };
 
 
-//傻瓜写法
+//双指针+求差
 var getIntersectionNode = function(headA, headB) {
     let a = headA, b = headB,n = {n:0, boo: false}, skip,skip2
     while(a !== null|| b !== null){
