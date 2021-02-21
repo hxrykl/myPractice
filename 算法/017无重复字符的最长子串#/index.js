@@ -5,7 +5,9 @@
 输入: s = "abcabcbb"
 输出: 3 
 */
-/**/
+
+
+/*双循环*/
 var lengthOfLongestSubstring = function(s) {
     if(!s.length) return 0
     let str = '', l = 0, strL = 1
@@ -21,4 +23,21 @@ var lengthOfLongestSubstring = function(s) {
         l++
     }
   	return strL
+};
+
+/*窗口模式*/
+
+var lengthOfLongestSubstring = function(s) {
+    if(!s.length) return 0
+    let str = '',
+		max = 1
+	for (let i = 0; i < s.length; i++){
+		if(str.includes(s[i])){
+			str = str.slice(str.indexOf(s[i])+1) + s[i]
+		} else {
+			str = str + s[i]
+		}
+		max = str.length > max ? str.length : max
+	}
+    return max
 };
