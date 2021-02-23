@@ -47,3 +47,21 @@ var isValid = function(s) {
     }
     return !str.length
 };
+
+
+var isValid = function(s) {
+    if(s.length <= 1) return false
+    let str = [], l = s.length, map = {'}': '{', ']': '[', ')' : '('}
+    for(let i = 0; i < l; i++){
+        if(map[s[i]]) {
+            if(str.length > 0 && str[str.length-1] == (map[s[i]]) ){
+                str.pop()
+            } else {
+                return false
+            }
+        } else {
+            str.push(s[i])
+        }
+    }
+    return !str.length
+};
