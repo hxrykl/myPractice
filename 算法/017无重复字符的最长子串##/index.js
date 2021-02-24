@@ -6,6 +6,26 @@
 输出: 3 
 */
 
+/*map下标+窗口*/
+var lengthOfLongestSubstring = function(s) {
+    let l = s.length
+        str = new Map(),
+        i = 0,
+        j = 0,
+        max = 1
+
+    if(!l) return 0
+
+    while(j < l){
+        if(str.has(s[j]) && str.get(s[j]) >= i){
+            i = str.get(s[j])
+        }
+        str.set(s[j], j+1)
+        max = max > (j + 1 - i) ?  max : j + 1 - i 
+        j++
+    }
+    return max
+};
 
 /*双循环*/
 var lengthOfLongestSubstring = function(s) {
@@ -41,3 +61,5 @@ var lengthOfLongestSubstring = function(s) {
 	}
     return max
 };
+
+
