@@ -48,12 +48,7 @@ LRUCache.prototype.get = function(key) {
 };
 
 LRUCache.prototype.put = function(key, value) {
-    if(this.map.has(key)) {
-        this.map.delete(key)
-    }
+	this.map.has(key) ? this.map.delete(key) : ''
     this.map.set(key, value)
-    if(this.map.size > this.size){
-        this.map.delete(this.map.keys().next().value)
-    } 
-
+    this.map.size > this.size ? this.map.delete(this.map.keys().next().value) : ''
 };
