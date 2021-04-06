@@ -11,9 +11,11 @@ function buildTree(preorder, inorder) {
 	if(inorder.length === 0) return null
 
 	let root = new TreeNode(preorder[0])
-	let mid = inorder.indexOf(preorder[0])
-	//
+
+	let mid = inorder.indexOf(preorder[0])//中序遍历可区分左右
+	//中序左边为0-mid，长度与前序相等
 	root.left = buildTree(preorder.slice(1, mid + 1), inorder.slice(0, mid))
+	//中序右边排除0-mid和mid，还剩mid+1-末尾，前序为左树剩余
 	root.right = buildTree(preorder.slice(mid + 1), inorder.slice(mid+1))
 
 	return root
@@ -34,3 +36,5 @@ function buildTree(preorder, inorder) {
 	}
 	return pointer(0, preorder.length - 1, 0, inorder.length - 1)
 }
+
+

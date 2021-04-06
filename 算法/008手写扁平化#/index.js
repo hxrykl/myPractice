@@ -3,6 +3,7 @@
 */
 
 
+//递归
 var newArr =  []
 function myFlat(arr, n) {
 	arr.map((item, index) => {
