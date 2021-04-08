@@ -26,15 +26,20 @@ function buildTree(preorder, inorder) {
 
 	function pointer (pre_star, pre_end, in_star, in_end) {
 		if(pre_star > pre_end) return null
+		//根值
 		let rootVal = preorder[pre_star]
+
 		let root = new TreeNode(rootVal)
+		//根在中序的位置
 		let mid = inorder.indexOf(rootVal)
+		//左长度
 		let leftNum = mid - in_star
+
 		root.left = pointer(pre_star + 1, pre_star + leftNum, in_star, mid - 1)
+
 		root.right = pointer(pre_star + leftNum + 1, pre_end, mid + 1, in_end)
+
 		return root
 	}
 	return pointer(0, preorder.length - 1, 0, inorder.length - 1)
 }
-
-
