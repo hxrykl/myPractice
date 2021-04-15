@@ -34,12 +34,40 @@ function buildTree(preorder, inorder) {
 		let mid = inorder.indexOf(rootVal)
 		//左长度
 		let leftNum = mid - in_star
-
+		//指针位置对应
 		root.left = pointer(pre_star + 1, pre_star + leftNum, in_star, mid - 1)
-
+		
 		root.right = pointer(pre_star + leftNum + 1, pre_end, mid + 1, in_end)
 
 		return root
 	}
 	return pointer(0, preorder.length - 1, 0, inorder.length - 1)
+}
+
+//优化indexof,牺牲内存换时间
+function buildTree(preorder, inorder){
+
+	let map = new Map()
+	inorder.map((item, index) => {
+		map.set(item, index)
+	})
+
+	function child(pre_star, pre_end, in_star, in_end){
+		if(pre_end < pre_star) return null
+
+		let rootVal = preorder[pre_star]
+
+		let root = new TreeNode(rootVal)
+
+		let mid = map.get(rootVal)
+
+		let l = mid - in_star
+
+		root.left = child(pre_star + 1, pre_star + l, in_star, in_star + l - 1) //pre_star + 1 + l - 1
+
+		root.right = child(pre_star + 1 + l, pre_end, in_star + l + 1, in_end)
+		
+		return root
+	}
+	return child(0, preorder.length - 1, 0, inorder.length - 1)
 }
