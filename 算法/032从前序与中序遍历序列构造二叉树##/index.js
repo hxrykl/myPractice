@@ -71,3 +71,23 @@ function buildTree(preorder, inorder){
 	}
 	return child(0, preorder.length - 1, 0, inorder.length - 1)
 }
+
+//暂时性仰望
+//前序遍历 preorder = [3,9,20,15,7]
+//中序遍历 inorder = [9,3,15,20,7]
+var buildTree = function(preorder, inorder) {
+    pre = i = 0// var pre, i; pre = i = 0;
+    build = function(stop) {
+    	console.log(pre, i, inorder[i], stop)
+        if (inorder[i] != stop) {
+            var root = new TreeNode(preorder[pre++])
+            root.left = build(root.val)
+            i++
+            root.right = build(stop)
+            return root
+        }
+        return null
+    }
+    return build()
+};
+
