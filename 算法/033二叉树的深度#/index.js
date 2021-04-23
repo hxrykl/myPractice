@@ -18,7 +18,7 @@ function maxDepth(root) {
 	recursive(root, result)
 	return result
 }
-
+//一行递归
 function maxDepth(root) {
     return root ? Math.max(maxDepth(root.left)+1, maxDepth(root.right)+1) : 0
 }
