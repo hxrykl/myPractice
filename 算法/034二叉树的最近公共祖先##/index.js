@@ -15,6 +15,23 @@
 */
 
 var lowestCommonAncestor = function(root, p, q) {
+	let result
+	function chain(root) {
+		if(root === null) return false
+		let left = chain(root.left)
+		let right = chain(root.right)
+		//两个都为true或同一条路径
+		if((left && right) || (left || right) && (root === p || root === q)){
+			result = root
+		}
+		//一旦找到节点相同返回true
+		return left || right || root === p || root === q
+	}
+	chain(root)
+	return result
+}
+
+var lowestCommonAncestor = function(root, p, q) {
     if(!root) return null
     let pArr = [], qArr = []
     function chain(root) {
@@ -49,20 +66,3 @@ var lowestCommonAncestor = function(root, p, q) {
     return pArr[minLength]
 };
 
-
-var lowestCommonAncestor = function(root, p, q) {
-    let result
-    function chain(root) {
-        if (root === null) return false
-        const lson = chain(root.left);
-        const rson = chain(root.right);
-        //两个都为true或同一条路径
-        if ((lson && rson) || ((root.val === p.val || root.val === q.val) && (lson || rson))) {
-            result = root;
-        } 
-        //一旦找到节点相同返回true
-        return lson || rson || (root.val === p.val || root.val === q.val);
-    }
-    chain(root)
-    return result
-}
