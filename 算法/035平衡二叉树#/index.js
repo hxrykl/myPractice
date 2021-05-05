@@ -18,3 +18,5 @@ var isBalanced = function(root) {
     //判断当前树是否平衡同时判断左右子数是否平衡
     return !(Math.abs(deep(root.left) - deep(root.right)) > 1) && isBalanced(root.left) && isBalanced(root.right)
 };
+
+//自低向上
