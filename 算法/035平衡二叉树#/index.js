@@ -8,15 +8,27 @@
 返回 false 。
 */
 
-//自上而下迭代
+//自上而下迭代 时间复杂度O(nlogn) 空间复杂度O(n)
 var isBalanced = function(root) {
     if(root === null) return true
     function deep(root) {
         if(root === null) return 0
-        return Math.max(deep(root.left) + 1 , deep(root.right) + 1)
+        return Math.max(deep(root.left), deep(root.right)) + 1
     }
     //判断当前树是否平衡同时判断左右子数是否平衡
     return !(Math.abs(deep(root.left) - deep(root.right)) > 1) && isBalanced(root.left) && isBalanced(root.right)
 };
 
-//自低向上
+//自低向上  时间复杂度O(n) 空间复杂度O(n)
+const isBalanced = function(root) {
+	function deep(node) {
+		if(!node) return 0
+		const left = deep(node.left)
+		const right = deep(node.right)
+		if(left === -1 || right === -1 || Math.abs(left - right) > 1) {
+			return -1
+		}
+		return Math.max(left, right) + 1
+	}
+	return deep(root) !== -1
+}
