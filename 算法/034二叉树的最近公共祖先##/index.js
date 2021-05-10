@@ -14,18 +14,19 @@
 
 */
 
+//深度优先
 var lowestCommonAncestor = function(root, p, q) {
 	let result
-	function chain(root) {
-		if(root === null) return false
-		let left = chain(root.left)
-		let right = chain(root.right)
+	function chain(node) {
+		if(node === null) return false
+		let left = chain(node.left)
+		let right = chain(node.right)
 		//两个都为true或同一条路径
-		if((left && right) || (left || right) && (root === p || root === q)){
-			result = root
+		if((left && right) || (left || right) && (node === p || node === q)){
+			result = node
 		}
 		//一旦找到节点相同返回true
-		return left || right || root === p || root === q
+		return left || right || node === p || node === q
 	}
 	chain(root)
 	return result
