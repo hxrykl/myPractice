@@ -18,11 +18,10 @@ var inorderTraversal = function(root) {
     return result
 };
 
-//栈循环
+//栈
 var inorderTraversal = function(root) {
     let result = [],
-        stack = []
-    if(root) stack.push(root)
+        stack = [root]
     while(stack.length > 0){
         let p = stack.pop()
         if(p.right !== null){
