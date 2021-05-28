@@ -5,7 +5,7 @@
 */
 
 
-/**快排 */
+/**快排 取一个基数，一个左指针，一个右指针，*/
 var sortArray = function (nums) {
   quick(nums, 0, nums.length - 1)
   return nums
@@ -23,12 +23,8 @@ function quick(list, left, right) {
 function partition(list, left, right) {
   let mid = list[(right + left) >> 1]
   while (left <= right) {
-    while (list[left] < mid) {
-      left++
-    }
-    while (list[right] > mid) {
-      right--
-    }
+    while (list[left] < mid) left++
+    while (list[right] > mid) right--
     if (left <= right) {
       [list[left], list[right]] = [list[right], list[left]]
       left++
@@ -38,7 +34,7 @@ function partition(list, left, right) {
   return left
 }
 
-/**冒泡 */
+/**冒泡 将大数值往后挪，不断缩短范围*/
 var sortArray = function (nums) {
   for (let i = nums.length - 1; i >= 0; i--) {
     for (let j = 0; j < i; j++) {
@@ -50,7 +46,7 @@ var sortArray = function (nums) {
   return nums;
 };
 
-/**插入排序 */
+/**插入排序 将数组分为两部分，已排序，未排序，从为排序中找到第一个，从已排序后面开始比较，大于时停下插入*/
 var sortArray = function (nums) {
   for (let i = 1; i < nums.length; i++) {
     let temp = nums[i];
@@ -64,7 +60,7 @@ var sortArray = function (nums) {
   return nums;
 };
 
-/**选择排序 */
+/**选择排序 从前往后，找到最小数，放到最前面，缩小范围，继续。。。*/
 var sortArray = function (nums) {
   for (let i = 0; i < nums.length; i++) {
     let min = Infinity;
