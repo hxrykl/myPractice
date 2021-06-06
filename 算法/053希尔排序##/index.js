@@ -25,7 +25,7 @@ var sortArray = function (nums) {
   return nums
 };
 
-/**希尔排序 时间O(nlogn) 空间O(1) */
+/**希尔排序 时间O(nlogn) 空间O(1) 间隔长度不断以1/2缩短，遍历循环上升*/
 var sortArray = function (nums) {
   let numsLength = nums.length
   
