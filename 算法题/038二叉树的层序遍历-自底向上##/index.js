@@ -11,7 +11,7 @@
 ]
 */
 
-//广度优先
+//广度优先：队列实现
 var levelOrderBottom = function(root) {
     if(!root) return []
 	let result = [], stack = [root]
@@ -28,7 +28,7 @@ var levelOrderBottom = function(root) {
 	}
 	return result
 };
-//深度优先
+//深度优先 ：递归实现
 var levelOrderBottom = function(root) {
 	let result = []
 	function deep(node, deepth) {
