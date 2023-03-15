@@ -4,7 +4,8 @@
 // 初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
 // 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
 
-var merge = function(nums1, m, nums2, n) {//倒序
+// 指针倒序: 因为非降序，从末尾取数值放数值  时间复杂度为 O(n)，空间复杂度O(1)
+var merge = function(nums1, m, nums2, n) {
     nums1.length = m;
     nums2.length = n;
     let i = m-- + --n
@@ -13,19 +14,14 @@ var merge = function(nums1, m, nums2, n) {//倒序
     }
 };
 
-var merge2 = function(nums1, m, nums2, n) {//
+//
+var merge2 = function(nums1, m, nums2, n) {
     nums1.length = m;
     nums2.length = n;
     nums1.push(...nums2)
-    nums1.sort((a,b) => {
-        if (a<b) {
-            return -1
-        } else {
-            return 1
-        }
-    })
-    
+    nums1.sort((a,b) => a - b)
 };
+
 var merge3 = function(nums1, m, nums2, n) {
     nums1.length = m;
     nums2.length = n;
